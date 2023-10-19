@@ -1,0 +1,24 @@
+{
+  "french": {
+    "first person singular": "je",
+    "second person singular": "tu",
+    "third person singular masculine": "il",
+    "third person singular feminine": "elle",
+    "third person singular indefinite": "on",
+    "first person plural": "nous",
+    "second person plural": "vous",
+    "third person masculine plural": "ils",
+    "third person feminine plural": "elles"
+  },
+  "english": {
+    "first person singular": "I",
+    "second person singular": "you",
+    "third person singular masculine": "he",
+    "third person singular feminine": "she",
+    "third person singular indefinite": "one",
+    "first person plural": "we",
+    "second person plural": "you",
+    "third person masculine plural": "they",
+    "third person feminine plural": "they"
+  }
+}

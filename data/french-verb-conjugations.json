@@ -1,0 +1,100 @@
+{
+  "aller": {
+    "present": {
+      "first person singular": { "masculine": "vais", "feminine": "vais" },
+      "second person singular": { "masculine": "vas", "feminine": "vas" },
+      "third person singular": {
+        "masculine": "va",
+        "feminine": "va",
+        "indefinite": "va"
+      },
+      "first person plural": { "masculine": "allons", "feminine": "allons" },
+      "second person plural": {
+        "masculine": {
+          "singular": "allez",
+          "plural": "allez"
+        },
+        "feminine": {
+          "singular": "allez",
+          "plural": "allez"
+        }
+      },
+      "third person plural": { "masculine": "vont", "feminine": "vont" }
+    },
+    "imperfect": {
+      "first person singular": { "masculine": "allais", "feminine": "allais" },
+      "second person singular": { "masculine": "allais", "feminine": "allais" },
+      "third person singular": {
+        "masculine": "allait",
+        "feminine": "allait",
+        "indefinite": "allait"
+      },
+      "first person plural": { "masculine": "allions", "feminine": "allions" },
+      "second person plural": {
+        "masculine": {
+          "singular": "alliez",
+          "plural": "alliez"
+        },
+        "feminine": {
+          "singular": "alliez",
+          "plural": "alliez"
+        }
+      },
+      "third person plural": { "masculine": "allaient", "feminine": "allaient" }
+    },
+    "conditional": {
+      "first person singular": { "masculine": "irais", "feminine": "irais" },
+      "second person singular": { "masculine": "irais", "feminine": "irais" },
+      "third person singular": {
+        "masculine": "irait",
+        "feminine": "irait",
+        "indefinite": "irait"
+      },
+      "first person plural": { "masculine": "irions", "feminine": "irions" },
+      "second person plural": {
+        "masculine": {
+          "singular": "iriez",
+          "plural": "iriez"
+        },
+        "feminine": {
+          "singular": "iriez",
+          "plural": "iriez"
+        }
+      },
+      "third person plural": { "masculine": "iraient", "feminine": "iraient" }
+    },
+    "passé composé": {
+      "first person singular": {
+        "masculine": "suis allé",
+        "feminine": "suis allée"
+      },
+      "second person singular": {
+        "masculine": "es allé",
+        "feminine": "es allée"
+      },
+      "third person singular ": {
+        "masculine": "est allé",
+        "feminine": "est allée",
+        "indefinite": "est allé"
+      },
+      "first person plural": {
+        "masculine": "sommes allés",
+        "feminine": "sommes allées"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "êtes allé",
+          "plural": "êtes allés"
+        },
+        "feminine": {
+          "singular": "êtes allée",
+          "plural": "êtes allées"
+        }
+      },
+      "third person plural": {
+        "masculine": "sont allés",
+        "feminine": "sont allées"
+      }
+    }
+  }
+}

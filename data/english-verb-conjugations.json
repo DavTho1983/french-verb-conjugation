@@ -1,0 +1,37 @@
+{
+  "aller": {
+    "infinitive": "to go",
+    "present": {
+      "first person singular": "go",
+      "second person singular": "go",
+      "third person singular": "goes",
+      "first person plural": "go",
+      "second person plural": "go",
+      "third person plural": "go"
+    },
+    "imperfect": {
+      "first person singular": "was going",
+      "second person singular": "were going",
+      "third person singular": "was going",
+      "first person plural": "were going",
+      "second person plural": "were going",
+      "third person plural": "were going"
+    },
+    "conditional": {
+      "first person singular": "would go",
+      "second person singular": "would go",
+      "third person singular": "would go",
+      "first person plural": "would go",
+      "second person plural": "would go",
+      "third person plural": "would go"
+    },
+    "passé composé": {
+      "first person singular": "went",
+      "second person singular": "went",
+      "third person singular ": "went",
+      "first person plural": "went",
+      "second person plural": "went",
+      "third person plural": "went"
+    }
+  }
+}
