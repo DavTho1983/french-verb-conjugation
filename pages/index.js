@@ -140,21 +140,8 @@ export default function Home() {
     setConjugationValue("");
   };
 
-  const vowels = ["a", "e", "i", "o", "u", "y"];
-
-  const allowForVowels = () => {
-    let check;
-    if (frenchPronoun === "je" && vowels.includes(frenchVerbConjugation[0])) {
-      check = "j'" + frenchVerbConjugation;
-    } else {
-      check = frenchPronoun + " " + frenchVerbConjugation;
-    }
-    return check;
-  };
-
   const checkConjugation = () => {
-    const check = allowForVowels();
-
+    const check = frenchPronoun + " " + frenchVerbConjugation;
     console.log("check: ", check, "conjugationValue", conjugationValue);
     if (conjugationValue.trim() === check || conjugationValue === undefined) {
       refreshVerb();
@@ -272,7 +259,7 @@ export default function Home() {
                 isOpen={isOpen}
                 onClose={onClose}
                 yourAnswer={conjugationValue}
-                answer={allowForVowels()}
+                answer={frenchPronoun + " " + frenchVerbConjugation}
                 reveal={reveal}
                 revealAnswer={revealAnswer}
               />
