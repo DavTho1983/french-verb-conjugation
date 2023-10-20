@@ -132,6 +132,7 @@ export default function Home() {
 
   const refreshVerb = () => {
     const randomPronoun = randomProperty(pronouns["english"]);
+    const randomVerb = randomProperty(frenchConjugation);
     const _tense = randomArrayItem(tenses);
     setPronoun(randomPronoun.value);
     setFrenchPronoun(pronouns["french"][randomPronoun.key]);
@@ -139,9 +140,9 @@ export default function Home() {
     const englishVerbTense = removeGender("english", randomPronoun.key);
     const frenchVerbTense = removeGender("french", randomPronoun.key);
     const englishVerbTenseWGender =
-      englishConjugation[verb][_tense][englishVerbTense];
+      englishConjugation[randomVerb.key][_tense][englishVerbTense];
     const frenchVerbTenseGender =
-      frenchConjugation[verb][_tense][frenchVerbTense.noGender][
+      frenchConjugation[randomVerb.key][_tense][frenchVerbTense.noGender][
         frenchVerbTense.gender
       ];
     setEnglishVerbConjugation(englishVerbTenseWGender);
@@ -150,6 +151,7 @@ export default function Home() {
     } else setFrenchVerbConjugation(frenchVerbTenseGender);
     setConjugationValue("");
     setTense(_tense);
+    setVerb(randomVerb.key);
     chooseFont();
     finalRef.current.focus();
   };
