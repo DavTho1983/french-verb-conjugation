@@ -34,14 +34,15 @@ function ConjugationContainer({ conjugation }) {
       <Box
         borderRadius={10}
         bg="tomato"
-        p={10}
+        p={5}
+        h={200}
+        w={200}
         color="white"
         fontWeight="semibold"
         letterSpacing="wide"
         fontSize="50px"
         ml="2"
         className={styles.title}
-        minW={200}
       >
         {conjugation}
       </Box>

@@ -132,8 +132,7 @@ export default function Home() {
 
   const refreshVerb = () => {
     const randomPronoun = randomProperty(pronouns["english"]);
-    // const _tense = randomArrayItem(tenses);
-    const _tense = "passé composé";
+    const _tense = randomArrayItem(tenses);
     setPronoun(randomPronoun.value);
     setFrenchPronoun(pronouns["french"][randomPronoun.key]);
     setPronounLabel(randomPronoun.key);
@@ -236,21 +235,23 @@ export default function Home() {
         </Head>
 
         <main>
-          <Flex direction={"column"} m={5}>
-            <Flex direction={"row"}>
-              <Flex direction={"column"} m={3}>
-                <Text fontSize={15} m={3} color={"blue"}>
-                  {pronounLabel}
-                </Text>
+          <Flex direction={"column"} m={0} w={400}>
+            <Flex direction={"row"} h={300} w={400} p={0}>
+              <Flex direction={"column"} m={2.5} w={180}>
+                <Flex direction={"row"} h={100}>
+                  <Text fontSize={15} m={3} color={"blue"} h={100}>
+                    {pronounLabel}
+                  </Text>
+                </Flex>
                 <ConjugationContainer conjugation={pronoun} />
               </Flex>
-              <Flex direction={"row"}>
-                <Flex direction={"column"} m={3}>
-                  <Flex direction={"row"}>
-                    <Text fontSize={15} m={3} color={"blue"}>
+              <Flex direction={"row"} h={300}>
+                <Flex direction={"column"} m={2.5} w={180}>
+                  <Flex direction={"row"} h={100}>
+                    <Text fontSize={15} m={3} color={"blue"} h={40}>
                       {verb}
                     </Text>
-                    <Text fontSize={15} m={3} color={"blue"}>
+                    <Text fontSize={15} m={3} color={"blue"} h={40}>
                       {tense}
                     </Text>
                   </Flex>
@@ -259,14 +260,14 @@ export default function Home() {
               </Flex>
             </Flex>
 
-            <Flex direction={"row"} m={5}>
+            <Flex direction={"row"} m={1}>
               <Flex direction={"column"}>
                 <Input
                   ref={finalRef}
                   fontSize={50}
-                  mb={8}
+                  m={8}
                   p={8}
-                  w={500}
+                  w={350}
                   value={conjugationValue}
                   onChange={(event) => setConjugationValue(event.target.value)}
                 />
@@ -282,27 +283,6 @@ export default function Home() {
                   ?
                 </Button>
               </Flex>
-              {/* <Flex direction={"row"}>
-                <Flex direction={"column"} m={3}>
-                  <Text fontSize={15} m={3} color={"blue"}>
-                    {pronounLabel}
-                  </Text>
-                  <ConjugationContainer conjugation={frenchPronoun} />
-                </Flex>
-                <Flex direction={"row"}>
-                  <Flex direction={"column"} m={3}>
-                    <Flex direction={"row"}>
-                      <Text fontSize={15} m={3} color={"blue"}>
-                        {verb}
-                      </Text>
-                      <Text fontSize={15} m={3} color={"blue"}>
-                        {tense}
-                      </Text>
-                    </Flex>
-                    <ConjugationContainer conjugation={frenchVerbConjugation} />
-                  </Flex>
-                </Flex>
-              </Flex> */}
               <VerbDrillsModal
                 isOpen={isOpen}
                 onClose={onClose}
