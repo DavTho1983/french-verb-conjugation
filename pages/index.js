@@ -175,6 +175,11 @@ export default function Home() {
     let check;
     if (frenchPronoun === "je" && vowels.includes(frenchVerbConjugation[0])) {
       check = "j'" + frenchVerbConjugation;
+    } else if (
+      pronounLabel === "second person plural" &&
+      frenchVerbConjugation[-1] === "s"
+    ) {
+      frenchVerbConjugation.slice(0, -1);
     } else {
       check = frenchPronoun + " " + frenchVerbConjugation;
     }
