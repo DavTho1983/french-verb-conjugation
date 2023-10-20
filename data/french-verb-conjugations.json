@@ -96,5 +96,103 @@
         "feminine": "sont allées"
       }
     }
+  },
+  "avoir": {
+    "present": {
+      "first person singular": { "masculine": "ai", "feminine": "ai" },
+      "second person singular": { "masculine": "as", "feminine": "as" },
+      "third person singular": {
+        "masculine": "a",
+        "feminine": "a",
+        "indefinite": "a"
+      },
+      "first person plural": { "masculine": "avons", "feminine": "avons" },
+      "second person plural": {
+        "masculine": {
+          "singular": "avez",
+          "plural": "avez"
+        },
+        "feminine": {
+          "singular": "avez",
+          "plural": "avez"
+        }
+      },
+      "third person plural": { "masculine": "ont", "feminine": "ont" }
+    },
+    "imperfect": {
+      "first person singular": { "masculine": "avais", "feminine": "avais" },
+      "second person singular": { "masculine": "avais", "feminine": "avais" },
+      "third person singular": {
+        "masculine": "avait",
+        "feminine": "avait",
+        "indefinite": "avait"
+      },
+      "first person plural": { "masculine": "avions", "feminine": "avions" },
+      "second person plural": {
+        "masculine": {
+          "singular": "aviez",
+          "plural": "aviez"
+        },
+        "feminine": {
+          "singular": "aviez",
+          "plural": "aviez"
+        }
+      },
+      "third person plural": { "masculine": "avaient", "feminine": "avaient" }
+    },
+    "conditional": {
+      "first person singular": { "masculine": "aurais", "feminine": "aurais" },
+      "second person singular": { "masculine": "aurais", "feminine": "aurais" },
+      "third person singular": {
+        "masculine": "aurait",
+        "feminine": "aurait",
+        "indefinite": "aurait"
+      },
+      "first person plural": { "masculine": "aurions", "feminine": "aurions" },
+      "second person plural": {
+        "masculine": {
+          "singular": "auriez",
+          "plural": "auriez"
+        },
+        "feminine": {
+          "singular": "auriez",
+          "plural": "auriez"
+        }
+      },
+      "third person plural": { "masculine": "auraient", "feminine": "auraient" }
+    },
+    "passé composé": {
+      "first person singular": {
+        "masculine": "ai eu",
+        "feminine": "ai eu"
+      },
+      "second person singular": {
+        "masculine": "as eu",
+        "feminine": "as eu"
+      },
+      "third person singular": {
+        "masculine": "a eu",
+        "feminine": "a eu",
+        "indefinite": "a eu"
+      },
+      "first person plural": {
+        "masculine": "avons eu",
+        "feminine": "avons eu"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "avez eu",
+          "plural": "avez eu"
+        },
+        "feminine": {
+          "singular": "avez eu",
+          "plural": "avez eu"
+        }
+      },
+      "third person plural": {
+        "masculine": "ont eu",
+        "feminine": "ont eu"
+      }
+    }
   }
 }

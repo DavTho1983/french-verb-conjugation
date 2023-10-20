@@ -69,7 +69,7 @@ export default function Home() {
   const [pronoun, setPronoun] = useState();
   const [frenchPronoun, setFrenchPronoun] = useState();
   const [pronounLabel, setPronounLabel] = useState();
-  const [verb, setVerb] = useState("aller");
+  const [verb, setVerb] = useState("avoir");
   const [tense, setTense] = useState("imperfect");
   const [englishVerbConjugation, setEnglishVerbConjugation] = useState();
   const [frenchVerbConjugation, setFrenchVerbConjugation] = useState();
@@ -228,6 +228,7 @@ export default function Home() {
     }
   }, [
     pronoun,
+    verb,
     currentFonts,
     tense,
     frenchPronoun,
@@ -254,7 +255,7 @@ export default function Home() {
                   <Text
                     m={3}
                     fontFamily={currentFonts.pronoun}
-                    fontSize={28}
+                    fontSize={20}
                     color={"#44337A"}
                     h={100}
                   >

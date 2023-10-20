@@ -33,5 +33,40 @@
       "second person plural": "went",
       "third person plural": "went"
     }
+  },
+  "avoir": {
+    "infinitive": "to have",
+    "present": {
+      "first person singular": "have",
+      "second person singular": "have",
+      "third person singular": "has",
+      "first person plural": "have",
+      "second person plural": "have",
+      "third person plural": "have"
+    },
+    "imperfect": {
+      "first person singular": "had",
+      "second person singular": "had",
+      "third person singular": "had",
+      "first person plural": "had",
+      "second person plural": "had",
+      "third person plural": "had"
+    },
+    "conditional": {
+      "first person singular": "will have",
+      "second person singular": "will have",
+      "third person singular": "will have",
+      "first person plural": "will have",
+      "second person plural": "will have",
+      "third person plural": "will have"
+    },
+    "passé composé": {
+      "first person singular": "had",
+      "second person singular": "had",
+      "third person singular": "had",
+      "first person plural": "had",
+      "second person plural": "had",
+      "third person plural": "had"
+    }
   }
 }
