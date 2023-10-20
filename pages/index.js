@@ -50,11 +50,6 @@ const theme = extendTheme({
       100: "#B794F4",
       500: "#B794F4", // you need this
     },
-    brand: {
-      50: "#44337A",
-      100: "#B794F4",
-      500: "#B794F4", // you need this
-    },
   },
   components: components,
 });
@@ -65,6 +60,11 @@ export default function Home() {
   const toast = useToast();
   const [correctConfirmation, setCorrectConfirmation] = useState();
   const [reveal, setReveal] = useState(false);
+  const [currentFonts, setCurrentFonts] = useState({
+    pronoun: "cursive",
+    verb: "monospace",
+    englishVerbConjugation: "sans-serif",
+  });
   const [conjugationValue, setConjugationValue] = useState();
   const [pronoun, setPronoun] = useState();
   const [frenchPronoun, setFrenchPronoun] = useState();
@@ -150,10 +150,27 @@ export default function Home() {
     } else setFrenchVerbConjugation(frenchVerbTenseGender);
     setConjugationValue("");
     setTense(_tense);
+    chooseFont();
     finalRef.current.focus();
   };
 
   const vowels = ["a", "e", "i", "o", "u", "y"];
+
+  const fonts = ["cursive", "monospace", "sans-serif"];
+
+  const chooseFont = () => {
+    return setCurrentFonts({
+      pronoun: randomArrayItem(fonts),
+      verb: randomArrayItem(fonts),
+    });
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      console.log("do validate");
+      checkConjugation();
+    }
+  };
 
   const allowForVowels = () => {
     let check;
@@ -185,7 +202,7 @@ export default function Home() {
       refreshVerb();
       toast({
         title: "Correct!",
-        position: "top",
+        position: "bottom",
         description: "You got it right!",
         status: "success",
         duration: 1000,
@@ -198,6 +215,7 @@ export default function Home() {
   };
 
   useEffect(() => {
+    console.log("isOpen: ", isOpen);
     if (!isOpen) {
       setReveal(false);
     }
@@ -210,6 +228,7 @@ export default function Home() {
     }
   }, [
     pronoun,
+    currentFonts,
     tense,
     frenchPronoun,
     conjugationValue,
@@ -228,23 +247,43 @@ export default function Home() {
         </Head>
 
         <main>
-          <Flex direction={"column"} m={0} w={400}>
-            <Flex direction={"row"} h={300} w={400} p={0}>
-              <Flex direction={"column"} m={2.5} w={180}>
+          <Flex direction={"column"} m={0} w={393}>
+            <Flex direction={"row"} h={300} w={393} p={0} m={8} mt={20}>
+              <Flex direction={"column"} m={0} w={180} h={300}>
                 <Flex direction={"row"} h={100}>
-                  <Text fontSize={15} m={3} color={"blue"} h={100}>
+                  <Text
+                    m={3}
+                    fontFamily={currentFonts.pronoun}
+                    fontSize={28}
+                    color={"#44337A"}
+                    h={100}
+                  >
                     {pronounLabel}
                   </Text>
                 </Flex>
                 <ConjugationContainer conjugation={pronoun} />
               </Flex>
               <Flex direction={"row"} h={300}>
-                <Flex direction={"column"} m={2.5} w={180}>
+                <Flex direction={"column"} w={180} h={100}>
                   <Flex direction={"row"} h={100}>
-                    <Text fontSize={15} m={3} color={"blue"} h={40}>
+                    <Text
+                      fontSize={28}
+                      m={3}
+                      font={currentFonts.verb}
+                      fontStyle={"italic"}
+                      color={"#293241"}
+                      h={100}
+                    >
                       {verb}
                     </Text>
-                    <Text fontSize={15} m={3} color={"blue"} h={40}>
+                    <Text
+                      fontSize={20}
+                      font={currentFonts.englishVerbConjugation}
+                      fontWeight={"bold"}
+                      m={3}
+                      color={"#44337A"}
+                      h={100}
+                    >
                       {tense}
                     </Text>
                   </Flex>
@@ -253,23 +292,26 @@ export default function Home() {
               </Flex>
             </Flex>
 
-            <Flex direction={"row"} m={1}>
+            <Flex direction={"row"}>
               <Flex direction={"column"}>
                 <Input
                   ref={finalRef}
                   fontSize={50}
                   m={8}
+                  mt={10}
                   p={8}
-                  w={350}
+                  w={377}
                   value={conjugationValue}
                   onChange={(event) => setConjugationValue(event.target.value)}
+                  onKeyDown={handleKeyDown}
                 />
                 <Button
-                  size="lg"
+                  size="md"
                   colorScheme="brand"
                   variant="solid"
-                  mb={8}
+                  m={8}
                   p={20}
+                  w={377}
                   fontSize={50}
                   onClick={() => checkConjugation()}
                 >
