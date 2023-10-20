@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  extendTheme,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
 
 import {
   Box,
@@ -30,6 +35,28 @@ import ConjugationContainer from "../components/conjugation/conjugation";
 import englishConjugation from "../data/english-verb-conjugations.json";
 import frenchConjugation from "../data/french-verb-conjugations.json";
 import pronouns from "../data/pronouns.json";
+import VerbDrillsModal from "../components/modal/modal";
+
+const components = {
+  Alert: {
+    variants: {
+      solid: {
+        container: {
+          bg: "#50C878",
+        },
+        title: {
+          color: "text.50",
+        },
+        description: {
+          color: "text.50",
+        },
+        icon: {
+          color: "text.50",
+        },
+      },
+    },
+  },
+};
 
 const theme = extendTheme({
   colors: {
@@ -38,19 +65,40 @@ const theme = extendTheme({
       100: "#B794F4",
       500: "#B794F4", // you need this
     },
+    text: {
+      50: "#ffffff",
+      100: "#B794F4",
+      500: "#B794F4", // you need this
+    },
+    brand: {
+      50: "#44337A",
+      100: "#B794F4",
+      500: "#B794F4", // you need this
+    },
   },
+  components: components,
 });
 
 export default function Home() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
+  const [correctConfirmation, setCorrectConfirmation] = useState();
+  const [reveal, setReveal] = useState(false);
   const [conjugationValue, setConjugationValue] = useState();
   const [pronoun, setPronoun] = useState();
   const [frenchPronoun, setFrenchPronoun] = useState();
   const [pronounLabel, setPronounLabel] = useState();
   const [verb, setVerb] = useState("aller");
-  const [tense, setTense] = useState("present");
+  const [tense, setTense] = useState("imperfect");
   const [gender, setGender] = useState("feminine");
   const [englishVerbConjugation, setEnglishVerbConjugation] = useState();
   const [frenchVerbConjugation, setFrenchVerbConjugation] = useState();
+
+  const revealAnswer = () => {
+    console.log("current reveal state: ", reveal);
+    setReveal(true);
+    return;
+  };
 
   const randomProperty = function (obj) {
     const keys = Object.keys(obj);
@@ -90,32 +138,66 @@ export default function Home() {
     }
   };
 
+  const refreshVerb = () => {
+    const randomPronoun = randomProperty(pronouns["english"]);
+    setPronoun(randomPronoun.value);
+    setFrenchPronoun(pronouns["french"][randomPronoun.key]);
+    setPronounLabel(randomPronoun.key);
+    const englishVerbTense = removeGender("english", randomPronoun.key);
+    const frenchVerbTense = removeGender("french", randomPronoun.key);
+    const englishVerbTenseWGender =
+      englishConjugation[verb][tense][englishVerbTense];
+    const frenchVerbTenseGender =
+      frenchConjugation[verb][tense][frenchVerbTense.noGender][
+        frenchVerbTense.gender
+      ];
+    setEnglishVerbConjugation(englishVerbTenseWGender);
+    if (frenchVerbTenseGender.hasOwnProperty("singular")) {
+      setFrenchVerbConjugation(frenchVerbTenseGender["singular"]);
+    } else setFrenchVerbConjugation(frenchVerbTenseGender);
+    setConjugationValue("");
+  };
+
   const checkConjugation = () => {
     const check = frenchPronoun + " " + frenchVerbConjugation;
     console.log("check: ", check, "conjugationValue", conjugationValue);
-    if (conjugationValue === check || conjugationValue === undefined) {
-      const randomPronoun = randomProperty(pronouns["english"]);
-      setPronoun(randomPronoun.value);
-      setFrenchPronoun(pronouns["french"][randomPronoun.key]);
-      setPronounLabel(randomPronoun.key);
-      const englishVerbTense = removeGender("english", randomPronoun.key);
-      const frenchVerbTense = removeGender("french", randomPronoun.key);
-      const englishVerbTenseWGender =
-        englishConjugation[verb][tense][englishVerbTense];
-      const frenchVerbTenseGender =
-        frenchConjugation[verb][tense][frenchVerbTense.noGender][
-          frenchVerbTense.gender
-        ];
-      setEnglishVerbConjugation(englishVerbTenseWGender);
-      if (frenchVerbTenseGender.hasOwnProperty("singular")) {
-        setFrenchVerbConjugation(frenchVerbTenseGender["singular"]);
-      } else setFrenchVerbConjugation(frenchVerbTenseGender);
+    if (conjugationValue.trim() === check || conjugationValue === undefined) {
+      refreshVerb();
+      toast({
+        title: "Correct!",
+        position: "top",
+        description: "You got it right!",
+        status: "success",
+        duration: 1000,
+        isClosable: true,
+        variant: "solid",
+      });
     } else {
-      alert("Incorrect");
+      onOpen();
     }
   };
 
-  useEffect(() => {}, [conjugationValue, frenchVerbConjugation]);
+  useEffect(() => {
+    if (!isOpen) {
+      setReveal(false);
+    }
+    if (correctConfirmation === true) {
+      setCorrectConfirmation(false);
+    }
+    if (!pronoun) {
+      console.log("pronoun is empty");
+      refreshVerb();
+    }
+  }, [
+    pronoun,
+    frenchPronoun,
+    conjugationValue,
+    frenchVerbConjugation,
+    englishVerbConjugation,
+    reveal,
+    isOpen,
+    correctConfirmation,
+  ]);
 
   return (
     <ChakraProvider theme={theme}>
@@ -191,6 +273,14 @@ export default function Home() {
                   </Flex>
                 </Flex>
               </Flex> */}
+              <VerbDrillsModal
+                isOpen={isOpen}
+                onClose={onClose}
+                yourAnswer={conjugationValue}
+                answer={frenchPronoun + " " + frenchVerbConjugation}
+                reveal={reveal}
+                revealAnswer={revealAnswer}
+              />
             </Flex>
           </Flex>
         </main>
