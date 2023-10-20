@@ -14,6 +14,7 @@ import ConjugationContainer from "../components/conjugation/conjugation";
 import englishConjugation from "../data/english-verb-conjugations.json";
 import frenchConjugation from "../data/french-verb-conjugations.json";
 import pronouns from "../data/pronouns.json";
+import tenses from "../data/tenses.json";
 import VerbDrillsModal from "../components/modal/modal";
 
 const components = {
@@ -71,7 +72,10 @@ export default function Home() {
   const [tense, setTense] = useState("imperfect");
   const [englishVerbConjugation, setEnglishVerbConjugation] = useState();
   const [frenchVerbConjugation, setFrenchVerbConjugation] = useState();
-  const [currentRandomPronoun, setCurrentRandomPronoun] = useState();
+  const [currentRandomPronoun, setCurrentRandomPronoun] = useState({
+    key: "",
+    value: "",
+  });
 
   const revealAnswer = () => {
     console.log("current reveal state: ", reveal);
@@ -86,6 +90,11 @@ export default function Home() {
       setCurrentRandomPronoun({ key: randomKey, value: obj[randomKey] });
       return { key: randomKey, value: obj[randomKey] };
     } else return randomProperty(obj);
+  };
+
+  const randomArrayItem = function (obj) {
+    const randomItem = obj[(obj.length * Math.random()) << 0];
+    return randomItem;
   };
 
   const removeGender = (language, verbTenseWGender) => {
@@ -122,15 +131,16 @@ export default function Home() {
 
   const refreshVerb = () => {
     const randomPronoun = randomProperty(pronouns["english"]);
+    const _tense = randomArrayItem(tenses);
     setPronoun(randomPronoun.value);
     setFrenchPronoun(pronouns["french"][randomPronoun.key]);
     setPronounLabel(randomPronoun.key);
     const englishVerbTense = removeGender("english", randomPronoun.key);
     const frenchVerbTense = removeGender("french", randomPronoun.key);
     const englishVerbTenseWGender =
-      englishConjugation[verb][tense][englishVerbTense];
+      englishConjugation[verb][_tense][englishVerbTense];
     const frenchVerbTenseGender =
-      frenchConjugation[verb][tense][frenchVerbTense.noGender][
+      frenchConjugation[verb][_tense][frenchVerbTense.noGender][
         frenchVerbTense.gender
       ];
     setEnglishVerbConjugation(englishVerbTenseWGender);
@@ -138,10 +148,23 @@ export default function Home() {
       setFrenchVerbConjugation(frenchVerbTenseGender["singular"]);
     } else setFrenchVerbConjugation(frenchVerbTenseGender);
     setConjugationValue("");
+    setTense(_tense);
+  };
+
+  const vowels = ["a", "e", "i", "o", "u", "y"];
+
+  const allowForVowels = () => {
+    let check;
+    if (frenchPronoun === "je" && vowels.includes(frenchVerbConjugation[0])) {
+      check = "j'" + frenchVerbConjugation;
+    } else {
+      check = frenchPronoun + " " + frenchVerbConjugation;
+    }
+    return check;
   };
 
   const checkConjugation = () => {
-    const check = frenchPronoun + " " + frenchVerbConjugation;
+    const check = allowForVowels();
     console.log("check: ", check, "conjugationValue", conjugationValue);
     if (conjugationValue.trim() === check || conjugationValue === undefined) {
       refreshVerb();
@@ -172,6 +195,7 @@ export default function Home() {
     }
   }, [
     pronoun,
+    tense,
     frenchPronoun,
     conjugationValue,
     frenchVerbConjugation,
@@ -259,7 +283,7 @@ export default function Home() {
                 isOpen={isOpen}
                 onClose={onClose}
                 yourAnswer={conjugationValue}
-                answer={frenchPronoun + " " + frenchVerbConjugation}
+                answer={allowForVowels()}
                 reveal={reveal}
                 revealAnswer={revealAnswer}
               />
