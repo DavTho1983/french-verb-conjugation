@@ -162,7 +162,7 @@ export default function Home() {
 
   const vowels = ["a", "e", "i", "o", "u", "y"];
 
-  const fonts = ["cursive", "monospace", "sans-serif"];
+  const fonts = ["monospace", "sans-serif"];
 
   const chooseFont = () => {
     return setCurrentFonts({
