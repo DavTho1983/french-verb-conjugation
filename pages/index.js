@@ -254,7 +254,7 @@ export default function Home() {
         </Head>
 
         <Flex direction={"column"} m={0} w={393} h={350}>
-          <Grid templateColumns="repeat(2, 1fr)" m={5} mb={0}>
+          <Grid templateColumns="repeat(2, 1fr)" m={2} mb={0}>
             <Center rowSpan={1} colSpan={1}>
               <Text
                 m={3}
@@ -277,20 +277,21 @@ export default function Home() {
                 {verb} {tense}
               </Text>
             </Center>
-            <GridItem rowSpan={1} colSpan={1} mt={5}>
+            <GridItem rowSpan={1} colSpan={1} mt={2}>
               <ConjugationContainer conjugation={pronoun} />
             </GridItem>
-            <GridItem rowSpan={1} colSpan={1} mt={5}>
+            <GridItem rowSpan={1} colSpan={1} mt={2}>
               <ConjugationContainer conjugation={englishVerbConjugation} />
             </GridItem>
           </Grid>
 
           <Grid templateColumns="repeat(1, 1fr)">
-            <GridItem rowSpan={1} colSpan={1}>
+            <GridItem rowSpan={1} colSpan={1} mb={0}>
               <Input
                 ref={finalRef}
                 fontSize={20}
                 m={5}
+                mt={2}
                 mb={0}
                 p={8}
                 maxW={350}
