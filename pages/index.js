@@ -8,28 +8,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Input,
-  InputGroup,
-  Th,
-  Tr,
-  Square,
-  Text,
-  Table,
-  Tbody,
-  Thead,
-  Td,
-  Tab,
-  TabList,
-  Tabs,
-  Select,
-  InputLeftElement,
-  Container,
-} from "@chakra-ui/react";
+import { Button, Flex, Input, Text } from "@chakra-ui/react";
 
 import ConjugationContainer from "../components/conjugation/conjugation";
 import englishConjugation from "../data/english-verb-conjugations.json";
@@ -90,9 +69,9 @@ export default function Home() {
   const [pronounLabel, setPronounLabel] = useState();
   const [verb, setVerb] = useState("aller");
   const [tense, setTense] = useState("imperfect");
-  const [gender, setGender] = useState("feminine");
   const [englishVerbConjugation, setEnglishVerbConjugation] = useState();
   const [frenchVerbConjugation, setFrenchVerbConjugation] = useState();
+  const [currentRandomPronoun, setCurrentRandomPronoun] = useState();
 
   const revealAnswer = () => {
     console.log("current reveal state: ", reveal);
@@ -103,7 +82,10 @@ export default function Home() {
   const randomProperty = function (obj) {
     const keys = Object.keys(obj);
     const randomKey = keys[(keys.length * Math.random()) << 0];
-    return { key: randomKey, value: obj[randomKey] };
+    if (currentRandomPronoun.key !== randomKey) {
+      setCurrentRandomPronoun({ key: randomKey, value: obj[randomKey] });
+      return { key: randomKey, value: obj[randomKey] };
+    } else return randomProperty(obj);
   };
 
   const removeGender = (language, verbTenseWGender) => {
