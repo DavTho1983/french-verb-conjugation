@@ -132,12 +132,28 @@ export default function Home() {
 
   const refreshVerb = () => {
     const randomPronoun = randomProperty(pronouns["english"]);
-    const _tense = randomArrayItem(tenses);
+    // const _tense = randomArrayItem(tenses);
+    const _tense = "passé composé";
     setPronoun(randomPronoun.value);
     setFrenchPronoun(pronouns["french"][randomPronoun.key]);
     setPronounLabel(randomPronoun.key);
     const englishVerbTense = removeGender("english", randomPronoun.key);
     const frenchVerbTense = removeGender("french", randomPronoun.key);
+
+    console.log(
+      "verb: ",
+      verb,
+      "tense: ",
+      _tense,
+      "frenchVerbTense.noGender",
+      frenchVerbTense.noGender,
+      "frenchVerbTense.gender",
+      frenchVerbTense.gender,
+      "frenchConjugation[verb][_tense][frenchVerbTense.noGender]",
+      frenchConjugation[verb][_tense][frenchVerbTense.noGender][
+        frenchVerbTense.gender
+      ]
+    );
     const englishVerbTenseWGender =
       englishConjugation[verb][_tense][englishVerbTense];
     const frenchVerbTenseGender =
