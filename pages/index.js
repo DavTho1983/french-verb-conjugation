@@ -253,84 +253,81 @@ export default function Home() {
           <title>French Verb Drills App</title>
         </Head>
 
-        <main>
-          <Flex direction={"column"} m={0} w={393} h={400}>
-            <Grid templateColumns="repeat(2, 1fr)">
-              <Center rowSpan={1} colSpan={1}>
-                <Text
-                  m={3}
-                  fontFamily={currentFonts.pronoun}
-                  fontSize={18}
-                  color={"#44337A"}
-                  h={50}
-                >
-                  {pronounLabel}
-                </Text>
-              </Center>
-              <Center rowSpan={1} colSpan={1}>
-                <Box>
-                  <Text
-                    m={3}
-                    fontFamily={currentFonts.pronoun}
-                    fontSize={18}
-                    color={"#293241"}
-                    h={50}
-                  >
-                    {verb} {tense}
-                  </Text>
-                </Box>
-              </Center>
-              <GridItem rowSpan={1} colSpan={1}>
-                <ConjugationContainer conjugation={pronoun} />
-              </GridItem>
-              <GridItem rowSpan={1} colSpan={1}>
-                <ConjugationContainer conjugation={englishVerbConjugation} />
-              </GridItem>
-            </Grid>
+        <Flex direction={"column"} m={0} w={393} h={350}>
+          <Grid templateColumns="repeat(2, 1fr)" m={5} mb={0}>
+            <Center rowSpan={1} colSpan={1}>
+              <Text
+                m={3}
+                fontFamily={currentFonts.pronoun}
+                fontSize={18}
+                color={"#44337A"}
+                h={50}
+              >
+                {pronounLabel}
+              </Text>
+            </Center>
+            <Center rowSpan={1} colSpan={1}>
+              <Text
+                m={3}
+                fontFamily={currentFonts.pronoun}
+                fontSize={18}
+                color={"#293241"}
+                h={50}
+              >
+                {verb} {tense}
+              </Text>
+            </Center>
+            <GridItem rowSpan={1} colSpan={1} mt={5}>
+              <ConjugationContainer conjugation={pronoun} />
+            </GridItem>
+            <GridItem rowSpan={1} colSpan={1} mt={5}>
+              <ConjugationContainer conjugation={englishVerbConjugation} />
+            </GridItem>
+          </Grid>
 
-            <Grid templateColumns="repeat(1, 1fr)">
-              <GridItem rowSpan={1} colSpan={1}>
-                <Input
-                  ref={finalRef}
-                  fontSize={20}
-                  m={5}
-                  p={8}
-                  maxW={350}
-                  value={conjugationValue}
-                  onChange={(event) => setConjugationValue(event.target.value)}
-                  // onKeyDown={handleKeyDown}
-                />
-              </GridItem>
-            </Grid>
+          <Grid templateColumns="repeat(1, 1fr)">
+            <GridItem rowSpan={1} colSpan={1}>
+              <Input
+                ref={finalRef}
+                fontSize={20}
+                m={5}
+                mb={0}
+                p={8}
+                maxW={350}
+                value={conjugationValue}
+                onChange={(event) => setConjugationValue(event.target.value)}
+                // onKeyDown={handleKeyDown}
+              />
+            </GridItem>
+          </Grid>
 
-            <Grid templateColumns="repeat(1, 1fr)">
-              <Center rowSpan={1} colSpan={1}>
-                <Button
-                  colorScheme="brand"
-                  variant="solid"
-                  m={8}
-                  w={320}
-                  h={100}
-                  fontSize={50}
-                  onClick={() => checkConjugation()}
-                >
-                  ?
-                </Button>
-              </Center>
-            </Grid>
+          <Grid templateColumns="repeat(1, 1fr)">
+            <Center rowSpan={1} colSpan={1}>
+              <Button
+                colorScheme="brand"
+                variant="solid"
+                m={8}
+                w={320}
+                h={100}
+                fontSize={50}
+                onClick={() => checkConjugation()}
+              >
+                ?
+              </Button>
+            </Center>
+          </Grid>
 
-            <VerbDrillsModal
-              isOpen={isOpen}
-              onClose={onClose}
-              yourAnswer={conjugationValue}
-              answer={allowForVowels()}
-              reveal={reveal}
-              revealAnswer={revealAnswer}
-              finalFocusRef={finalRef}
-            />
-          </Flex>
-          <Flex w={393} h={400} />
-        </main>
+          <VerbDrillsModal
+            isOpen={isOpen}
+            onClose={onClose}
+            yourAnswer={conjugationValue}
+            answer={allowForVowels()}
+            reveal={reveal}
+            revealAnswer={revealAnswer}
+            finalFocusRef={finalRef}
+          />
+        </Flex>
+        <Flex w={393} h={400} />
       </div>
     </ChakraProvider>
   );
