@@ -167,12 +167,12 @@ export default function Home() {
     });
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      console.log("do validate");
-      checkConjugation();
-    }
-  };
+  // const handleKeyDown = (event) => {
+  //   if (event.key === "Enter") {
+  //     console.log("do validate");
+  //     checkConjugation();
+  //   }
+  // };
 
   const allowForVowels = () => {
     let check;
@@ -306,7 +306,7 @@ export default function Home() {
                   w={377}
                   value={conjugationValue}
                   onChange={(event) => setConjugationValue(event.target.value)}
-                  onKeyDown={handleKeyDown}
+                  // onKeyDown={handleKeyDown}
                 />
                 <Button
                   size="md"
