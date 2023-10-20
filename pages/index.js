@@ -3,6 +3,10 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import {
   ChakraProvider,
+  Center,
+  Grid,
+  GridItem,
+  Box,
   extendTheme,
   useDisclosure,
   useToast,
@@ -251,86 +255,80 @@ export default function Home() {
 
         <main>
           <Flex direction={"column"} m={0} w={393}>
-            <Flex direction={"row"} h={300} w={393} p={0} m={8} mt={5}>
-              <Flex direction={"column"} m={0} w={180} h={300}>
-                <Flex direction={"row"} h={100}>
+            <Grid templateColumns="repeat(2, 1fr)">
+              <Center rowSpan={1} colSpan={1}>
+                <Text
+                  m={3}
+                  fontFamily={currentFonts.pronoun}
+                  fontSize={18}
+                  color={"#44337A"}
+                  h={100}
+                >
+                  {pronounLabel}
+                </Text>
+              </Center>
+              <Center rowSpan={1} colSpan={1}>
+                <Box>
                   <Text
                     m={3}
                     fontFamily={currentFonts.pronoun}
                     fontSize={18}
-                    color={"#44337A"}
+                    color={"#293241"}
                     h={100}
                   >
-                    {pronounLabel}
+                    {verb} {tense}
                   </Text>
-                </Flex>
+                </Box>
+              </Center>
+              <GridItem rowSpan={1} colSpan={1}>
                 <ConjugationContainer conjugation={pronoun} />
-              </Flex>
-              <Flex direction={"row"} h={300}>
-                <Flex direction={"column"} w={180} h={100}>
-                  <Flex direction={"row"} h={100}>
-                    <Text
-                      fontSize={28}
-                      m={3}
-                      font={currentFonts.verb}
-                      fontStyle={"italic"}
-                      color={"#293241"}
-                      h={100}
-                    >
-                      {verb}
-                    </Text>
-                    <Text
-                      fontSize={20}
-                      font={currentFonts.englishVerbConjugation}
-                      fontWeight={"bold"}
-                      m={3}
-                      color={"#44337A"}
-                      h={100}
-                    >
-                      {tense}
-                    </Text>
-                  </Flex>
-                  <ConjugationContainer conjugation={englishVerbConjugation} />
-                </Flex>
-              </Flex>
-            </Flex>
+              </GridItem>
+              <GridItem rowSpan={1} colSpan={1}>
+                <ConjugationContainer conjugation={englishVerbConjugation} />
+              </GridItem>
+            </Grid>
 
-            <Flex direction={"row"}>
-              <Flex direction={"column"}>
+            <Grid templateColumns="repeat(1, 1fr)">
+              <GridItem rowSpan={1} colSpan={1}>
                 <Input
                   ref={finalRef}
-                  fontSize={50}
-                  m={8}
+                  fontSize={20}
+                  m={5}
                   mt={10}
                   p={8}
-                  w={377}
+                  maxW={350}
                   value={conjugationValue}
                   onChange={(event) => setConjugationValue(event.target.value)}
                   // onKeyDown={handleKeyDown}
                 />
+              </GridItem>
+            </Grid>
+
+            <Grid templateColumns="repeat(1, 1fr)">
+              <Center rowSpan={1} colSpan={1}>
                 <Button
-                  size="md"
                   colorScheme="brand"
                   variant="solid"
                   m={8}
-                  p={20}
-                  w={377}
+                  p={100}
+                  w={320}
                   fontSize={50}
                   onClick={() => checkConjugation()}
                 >
                   ?
                 </Button>
-              </Flex>
-              <VerbDrillsModal
-                isOpen={isOpen}
-                onClose={onClose}
-                yourAnswer={conjugationValue}
-                answer={allowForVowels()}
-                reveal={reveal}
-                revealAnswer={revealAnswer}
-                finalFocusRef={finalRef}
-              />
-            </Flex>
+              </Center>
+            </Grid>
+
+            <VerbDrillsModal
+              isOpen={isOpen}
+              onClose={onClose}
+              yourAnswer={conjugationValue}
+              answer={allowForVowels()}
+              reveal={reveal}
+              revealAnswer={revealAnswer}
+              finalFocusRef={finalRef}
+            />
           </Flex>
         </main>
       </div>

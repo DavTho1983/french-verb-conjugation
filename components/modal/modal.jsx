@@ -33,6 +33,7 @@ function VerbDrillsModal({
       onClose={onClose}
       isCentered
       size="xl"
+      w={"50vw"}
     >
       <ModalOverlay
         bg="none"

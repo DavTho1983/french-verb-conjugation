@@ -30,23 +30,20 @@ function ConjugationContainer({ conjugation }) {
   useEffect(() => {}, []);
 
   return (
-    <Flex>
-      <Box
-        borderRadius={10}
-        bg="tomato"
-        p={5}
-        h={200}
-        w={200}
-        color="white"
-        fontWeight="semibold"
-        letterSpacing="wide"
-        fontSize="50px"
-        ml="2"
-        className={styles.title}
-      >
-        {conjugation}
-      </Box>
-    </Flex>
+    <Box
+      borderRadius={10}
+      bg="tomato"
+      p={5}
+      h={200}
+      color="white"
+      fontWeight="semibold"
+      letterSpacing="wide"
+      fontSize={20}
+      m={5}
+      className={styles.title}
+    >
+      {conjugation}
+    </Box>
   );
 }
 
