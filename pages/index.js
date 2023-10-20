@@ -161,8 +161,8 @@ export default function Home() {
       ];
     setEnglishVerbConjugation(englishVerbTenseWGender);
     if (frenchVerbTenseGender.hasOwnProperty("singular")) {
-      setFrenchVerbConjugation(frenchVerbTenseGender["singular"]);
-    } else setFrenchVerbConjugation(frenchVerbTenseGender);
+      setFrenchVerbConjugation(frenchVerbTenseGender["singular"].toLowerCase());
+    } else setFrenchVerbConjugation(frenchVerbTenseGender.toLowerCase());
     setConjugationValue("");
     setTense(_tense);
     finalRef.current.focus();
@@ -173,7 +173,7 @@ export default function Home() {
   const allowForVowels = () => {
     let check;
     if (frenchPronoun === "je" && vowels.includes(frenchVerbConjugation[0])) {
-      check = "j'" + frenchVerbConjugation;
+      check = "j'" + frenchVerbConjugation.toLowerCase();
     } else if (
       pronounLabel === "second person plural" &&
       frenchVerbConjugation[-1] === "s"
@@ -187,7 +187,6 @@ export default function Home() {
 
   const checkConjugation = () => {
     const check = allowForVowels();
-    console.log("check: ", check, "conjugationValue", conjugationValue);
     if (conjugationValue.trim() === check || conjugationValue === undefined) {
       refreshVerb();
       toast({
