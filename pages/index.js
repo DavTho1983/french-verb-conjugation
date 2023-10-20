@@ -23,6 +23,8 @@ const components = {
       solid: {
         container: {
           bg: "#50C878",
+          position: "relative",
+          marginBottom: "400px",
         },
         title: {
           color: "text.50",
@@ -204,7 +206,6 @@ export default function Home() {
       refreshVerb();
       toast({
         title: "Correct!",
-        position: "bottom",
         description: "You got it right!",
         status: "success",
         duration: 1000,
@@ -251,13 +252,13 @@ export default function Home() {
 
         <main>
           <Flex direction={"column"} m={0} w={393}>
-            <Flex direction={"row"} h={300} w={393} p={0} m={8} mt={20}>
+            <Flex direction={"row"} h={300} w={393} p={0} m={8} mt={5}>
               <Flex direction={"column"} m={0} w={180} h={300}>
                 <Flex direction={"row"} h={100}>
                   <Text
                     m={3}
                     fontFamily={currentFonts.pronoun}
-                    fontSize={20}
+                    fontSize={18}
                     color={"#44337A"}
                     h={100}
                   >
