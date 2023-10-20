@@ -138,21 +138,6 @@ export default function Home() {
     setPronounLabel(randomPronoun.key);
     const englishVerbTense = removeGender("english", randomPronoun.key);
     const frenchVerbTense = removeGender("french", randomPronoun.key);
-
-    console.log(
-      "verb: ",
-      verb,
-      "tense: ",
-      _tense,
-      "frenchVerbTense.noGender",
-      frenchVerbTense.noGender,
-      "frenchVerbTense.gender",
-      frenchVerbTense.gender,
-      "frenchConjugation[verb][_tense][frenchVerbTense.noGender]",
-      frenchConjugation[verb][_tense][frenchVerbTense.noGender][
-        frenchVerbTense.gender
-      ]
-    );
     const englishVerbTenseWGender =
       englishConjugation[verb][_tense][englishVerbTense];
     const frenchVerbTenseGender =
@@ -161,8 +146,8 @@ export default function Home() {
       ];
     setEnglishVerbConjugation(englishVerbTenseWGender);
     if (frenchVerbTenseGender.hasOwnProperty("singular")) {
-      setFrenchVerbConjugation(frenchVerbTenseGender["singular"].toLowerCase());
-    } else setFrenchVerbConjugation(frenchVerbTenseGender.toLowerCase());
+      setFrenchVerbConjugation(frenchVerbTenseGender["singular"]);
+    } else setFrenchVerbConjugation(frenchVerbTenseGender);
     setConjugationValue("");
     setTense(_tense);
     finalRef.current.focus();
@@ -173,7 +158,7 @@ export default function Home() {
   const allowForVowels = () => {
     let check;
     if (frenchPronoun === "je" && vowels.includes(frenchVerbConjugation[0])) {
-      check = "j'" + frenchVerbConjugation.toLowerCase();
+      check = "j'" + frenchVerbConjugation;
     } else if (
       pronounLabel === "second person plural" &&
       frenchVerbConjugation[-1] === "s"
@@ -182,12 +167,21 @@ export default function Home() {
     } else {
       check = frenchPronoun + " " + frenchVerbConjugation;
     }
-    return check;
+    return check.toLowerCase();
   };
 
   const checkConjugation = () => {
     const check = allowForVowels();
-    if (conjugationValue.trim() === check || conjugationValue === undefined) {
+    console.log(
+      "check: ",
+      check,
+      "conjugationValue",
+      conjugationValue.trim().toLowerCase()
+    );
+    if (
+      conjugationValue.trim().toLowerCase() === check ||
+      conjugationValue === undefined
+    ) {
       refreshVerb();
       toast({
         title: "Correct!",
