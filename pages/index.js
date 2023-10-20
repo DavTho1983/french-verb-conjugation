@@ -254,7 +254,7 @@ export default function Home() {
         </Head>
 
         <main>
-          <Flex direction={"column"} m={0} w={393}>
+          <Flex direction={"column"} m={0} w={393} h={400}>
             <Grid templateColumns="repeat(2, 1fr)">
               <Center rowSpan={1} colSpan={1}>
                 <Text
@@ -262,7 +262,7 @@ export default function Home() {
                   fontFamily={currentFonts.pronoun}
                   fontSize={18}
                   color={"#44337A"}
-                  h={100}
+                  h={50}
                 >
                   {pronounLabel}
                 </Text>
@@ -274,7 +274,7 @@ export default function Home() {
                     fontFamily={currentFonts.pronoun}
                     fontSize={18}
                     color={"#293241"}
-                    h={100}
+                    h={50}
                   >
                     {verb} {tense}
                   </Text>
@@ -294,7 +294,6 @@ export default function Home() {
                   ref={finalRef}
                   fontSize={20}
                   m={5}
-                  mt={10}
                   p={8}
                   maxW={350}
                   value={conjugationValue}
@@ -310,8 +309,8 @@ export default function Home() {
                   colorScheme="brand"
                   variant="solid"
                   m={8}
-                  p={100}
                   w={320}
+                  h={100}
                   fontSize={50}
                   onClick={() => checkConjugation()}
                 >
@@ -330,6 +329,7 @@ export default function Home() {
               finalFocusRef={finalRef}
             />
           </Flex>
+          <Flex w={393} h={400} />
         </main>
       </div>
     </ChakraProvider>

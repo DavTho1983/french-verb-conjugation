@@ -34,7 +34,7 @@ function ConjugationContainer({ conjugation }) {
       borderRadius={10}
       bg="tomato"
       p={5}
-      h={200}
+      h={100}
       color="white"
       fontWeight="semibold"
       letterSpacing="wide"
