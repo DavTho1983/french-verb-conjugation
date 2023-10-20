@@ -60,6 +60,7 @@ const theme = extendTheme({
 });
 
 export default function Home() {
+  const finalRef = React.useRef(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
   const [correctConfirmation, setCorrectConfirmation] = useState();
@@ -149,6 +150,7 @@ export default function Home() {
     } else setFrenchVerbConjugation(frenchVerbTenseGender);
     setConjugationValue("");
     setTense(_tense);
+    finalRef.current.focus();
   };
 
   const vowels = ["a", "e", "i", "o", "u", "y"];
@@ -239,6 +241,7 @@ export default function Home() {
             <Flex direction={"row"} m={5}>
               <Flex direction={"column"}>
                 <Input
+                  ref={finalRef}
                   fontSize={50}
                   mb={8}
                   p={8}
@@ -286,6 +289,7 @@ export default function Home() {
                 answer={allowForVowels()}
                 reveal={reveal}
                 revealAnswer={revealAnswer}
+                finalFocusRef={finalRef}
               />
             </Flex>
           </Flex>

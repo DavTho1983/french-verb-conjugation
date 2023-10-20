@@ -1,5 +1,5 @@
 // Core React dependencies
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Box,
   Button,
@@ -24,9 +24,16 @@ function VerbDrillsModal({
   yourAnswer,
   revealAnswer,
   reveal,
+  finalFocusRef,
 }) {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
+    <Modal
+      finalFocusRef={finalFocusRef}
+      isOpen={isOpen}
+      onClose={onClose}
+      isCentered
+      size="xl"
+    >
       <ModalOverlay
         bg="none"
         backdropFilter="auto"
