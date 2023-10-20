@@ -23,8 +23,6 @@ const components = {
       solid: {
         container: {
           bg: "#50C878",
-          position: "relative",
-          marginBottom: "400px",
         },
         title: {
           color: "text.50",
@@ -206,6 +204,7 @@ export default function Home() {
       refreshVerb();
       toast({
         title: "Correct!",
+        position: "top",
         description: "You got it right!",
         status: "success",
         duration: 1000,
