@@ -3,6 +3,7 @@ import React from "react";
 import {
   Box,
   Button,
+  Center,
   Flex,
   Modal,
   ModalBody,
@@ -32,8 +33,6 @@ function VerbDrillsModal({
       isOpen={isOpen}
       onClose={onClose}
       isCentered
-      size="xl"
-      w={"50vw"}
     >
       <ModalOverlay
         bg="none"
@@ -41,28 +40,34 @@ function VerbDrillsModal({
         backdropInvert="10%"
         backdropBlur="2px"
       />
-      <ModalContent>
+      <ModalContent maxW="350px" h={300}>
         <ModalHeader className={styles.modalHeader} />
         <ModalCloseButton />
         <ModalBody>
           {reveal === true ? (
-            <Flex count={2} h={100} flexDirection={"row"} align="center">
-              The correct answer is{" "}
-              <p className={styles.yourAnswer}>{answer}</p>
-            </Flex>
+            <Center count={2} h={150}>
+              <Flex flexDirection={"column"}>
+                <Box mt={10} fontSize={25}>
+                  The correct answer is{" "}
+                </Box>
+                <Box mt={5} className={styles.yourAnswer}>
+                  {answer}
+                </Box>
+              </Flex>
+            </Center>
           ) : (
-            <Flex count={2} h={100} flexDirection={"row"} align="center">
+            <Center>
               {yourAnswer !== "" ? (
-                <>
+                <Center mt={14}>
                   Sorry <p className={styles.yourWrongAnswer}>{yourAnswer}</p>{" "}
                   is the wrong answer
-                </>
+                </Center>
               ) : (
-                <Box className={styles.noAnswer}>
+                <Center m={8} mt={14} className={styles.noAnswer}>
                   Please make sure to type your answer before checking!
-                </Box>
+                </Center>
               )}
-            </Flex>
+            </Center>
           )}
         </ModalBody>
 

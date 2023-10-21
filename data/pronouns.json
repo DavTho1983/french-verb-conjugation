@@ -1,24 +1,32 @@
 {
   "french": {
-    "first person singular": "je",
-    "second person singular": "tu",
+    "first person singular masculine": "je",
+    "first person singular feminine": "je",
+    "second person singular masculine": "tu",
+    "second person singular feminine": "tu",
     "third person singular masculine": "il",
     "third person singular feminine": "elle",
     "third person singular indefinite": "on",
-    "first person plural": "nous",
-    "second person plural": "vous",
-    "third person masculine plural": "ils",
-    "third person feminine plural": "elles"
+    "first person plural masculine": "nous",
+    "first person plural feminine": "nous",
+    "second person plural masculine": "vous",
+    "second person plural feminine": "vous",
+    "third person plural masculine ": "ils",
+    "third person plural feminine": "elles"
   },
   "english": {
-    "first person singular": "I",
-    "second person singular": "you",
+    "first person singular masculine": "I",
+    "first person singular feminine": "I",
+    "second person singular masculine": "you",
+    "second person singular feminine": "you",
     "third person singular masculine": "he",
     "third person singular feminine": "she",
     "third person singular indefinite": "one",
-    "first person plural": "we",
-    "second person plural": "you",
-    "third person masculine plural": "they",
-    "third person feminine plural": "they"
+    "first person plural masculine": "we",
+    "first person plural feminine": "we",
+    "second person plural masculine": "you",
+    "second person plural feminine": "you",
+    "third person plural masculine": "they",
+    "third person plural feminine": "they"
   }
 }

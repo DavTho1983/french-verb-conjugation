@@ -30,3 +30,7 @@
   color: red;
   font-size: 2.2em;
 }
+
+.custom-modal {
+  border-radius: 30px !important;
+}

@@ -40,6 +40,16 @@ const components = {
       },
     },
   },
+  Modal: {
+    baseStyle: (props) => ({
+      dialog: {
+        maxWidth: ["95%", "95%", "95%"],
+        minWidth: "95%",
+        bg: "#FFFFFF",
+        border: "4px solid #B794F4",
+      },
+    }),
+  },
 };
 
 const theme = extendTheme({
@@ -136,19 +146,25 @@ export default function Home() {
 
   const refreshVerb = () => {
     const randomPronoun = randomProperty(pronouns["english"]);
+    console.log("randomPronoun: ", randomPronoun);
     const randomVerb = randomProperty(frenchConjugation);
     const _tense = randomArrayItem(tenses);
+    console.log(" random tense: ", _tense);
     setPronoun(randomPronoun.value);
     setFrenchPronoun(pronouns["french"][randomPronoun.key]);
     setPronounLabel(randomPronoun.key);
     const englishVerbTense = removeGender("english", randomPronoun.key);
+    console.log("englishVerbTense: ", englishVerbTense);
     const frenchVerbTense = removeGender("french", randomPronoun.key);
+    console.log("frenchVerbTense: ", frenchVerbTense);
     const englishVerbTenseWGender =
       englishConjugation[randomVerb.key][_tense][englishVerbTense];
     const frenchVerbTenseGender =
       frenchConjugation[randomVerb.key][_tense][frenchVerbTense.noGender][
         frenchVerbTense.gender
       ];
+    console.log("englishVerbTenseWGender: ", englishVerbTenseWGender);
+    console.log("frenchVerbTenseGender: ", frenchVerbTenseGender);
     setEnglishVerbConjugation(englishVerbTenseWGender);
     if (frenchVerbTenseGender.hasOwnProperty("singular")) {
       setFrenchVerbConjugation(frenchVerbTenseGender["singular"]);
@@ -171,22 +187,16 @@ export default function Home() {
     });
   };
 
-  // const handleKeyDown = (event) => {
-  //   if (event.key === "Enter") {
-  //     console.log("do validate");
-  //     checkConjugation();
-  //   }
-  // };
-
   const allowForVowels = () => {
+    console.log(
+      "frenchPronoun: ",
+      frenchPronoun,
+      "frenchVerbConjugation: ",
+      frenchVerbConjugation
+    );
     let check;
     if (frenchPronoun === "je" && vowels.includes(frenchVerbConjugation[0])) {
       check = "j'" + frenchVerbConjugation;
-    } else if (
-      pronounLabel === "second person plural" &&
-      frenchVerbConjugation[-1] === "s"
-    ) {
-      frenchVerbConjugation.slice(0, -1);
     } else {
       check = frenchPronoun + " " + frenchVerbConjugation;
     }
@@ -297,7 +307,6 @@ export default function Home() {
                 maxW={350}
                 value={conjugationValue}
                 onChange={(event) => setConjugationValue(event.target.value)}
-                // onKeyDown={handleKeyDown}
               />
             </GridItem>
           </Grid>
