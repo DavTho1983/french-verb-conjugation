@@ -35,7 +35,7 @@ import verbs from "../../data/english-verb-conjugations.json";
 
 // Component imports
 
-function NavBar({ isNavBarOpen }) {
+function NavBar({ isNavBarOpen, handleVerbClick }) {
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [item1Open, setItem1Open] = useState(false);
   const [item2Open, setItem2Open] = useState(false);
@@ -157,7 +157,7 @@ function NavBar({ isNavBarOpen }) {
                   fontSize={20}
                   fontWeight="semibold"
                   letterSpacing="wide"
-                  //   onClick={() => handleTabClick(index)}
+                  onChange={() => handleVerbClick(index)}
                 >
                   {verb}
                 </Checkbox>

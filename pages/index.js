@@ -87,6 +87,7 @@ export default function Home() {
     englishVerbConjugation: "sans-serif",
   });
   const [conjugationValue, setConjugationValue] = useState();
+  const [excludedVerbs, setExcludedVerbs] = useState();
   const [pronoun, setPronoun] = useState();
   const [frenchPronoun, setFrenchPronoun] = useState();
   const [pronounLabel, setPronounLabel] = useState();
@@ -100,13 +101,12 @@ export default function Home() {
   });
 
   const revealAnswer = () => {
-    console.log("current reveal state: ", reveal);
     setReveal(true);
     return;
   };
 
-  const randomProperty = function (obj) {
-    const keys = Object.keys(obj);
+  const randomProperty = function (obj, excludedKeys) {
+    const keys = Object.keys(obj).filter((x) => !excludedKeys?.has(x));
     const randomKey = keys[(keys.length * Math.random()) << 0];
     if (currentRandomPronoun.key !== randomKey) {
       setCurrentRandomPronoun({ key: randomKey, value: obj[randomKey] });
@@ -153,25 +153,19 @@ export default function Home() {
 
   const refreshVerb = () => {
     const randomPronoun = randomProperty(pronouns["english"]);
-    console.log("randomPronoun: ", randomPronoun);
-    const randomVerb = randomProperty(frenchConjugation);
+    const randomVerb = randomProperty(frenchConjugation, excludedVerbs);
     const _tense = randomArrayItem(tenses);
-    console.log(" random tense: ", _tense);
     setPronoun(randomPronoun.value);
     setFrenchPronoun(pronouns["french"][randomPronoun.key]);
     setPronounLabel(randomPronoun.key);
     const englishVerbTense = removeGender("english", randomPronoun.key);
-    console.log("englishVerbTense: ", englishVerbTense);
     const frenchVerbTense = removeGender("french", randomPronoun.key);
-    console.log("frenchVerbTense: ", frenchVerbTense);
     const englishVerbTenseWGender =
       englishConjugation[randomVerb.key][_tense][englishVerbTense];
     const frenchVerbTenseGender =
       frenchConjugation[randomVerb.key][_tense][frenchVerbTense.noGender][
         frenchVerbTense.gender
       ];
-    console.log("englishVerbTenseWGender: ", englishVerbTenseWGender);
-    console.log("frenchVerbTenseGender: ", frenchVerbTenseGender);
     setEnglishVerbConjugation(englishVerbTenseWGender);
     if (frenchVerbTenseGender.hasOwnProperty("singular")) {
       setFrenchVerbConjugation(frenchVerbTenseGender["singular"]);
@@ -187,8 +181,8 @@ export default function Home() {
 
   const fonts = ["monospace", "sans-serif"];
 
-  const getCapitalFirstLetter = (str) => {
-    if (str !== undefined) return str.split(" ").splice(-1)[0][0].toUpperCase();
+  const getFirstLetter = (str) => {
+    if (str !== undefined) return str.split(" ").splice(-1)[0][0];
     return;
   };
 
@@ -200,12 +194,6 @@ export default function Home() {
   };
 
   const allowForVowels = () => {
-    console.log(
-      "frenchPronoun: ",
-      frenchPronoun,
-      "frenchVerbConjugation: ",
-      frenchVerbConjugation
-    );
     let check;
     if (frenchPronoun === "je" && vowels.includes(frenchVerbConjugation[0])) {
       check = "j'" + frenchVerbConjugation;
@@ -217,12 +205,6 @@ export default function Home() {
 
   const checkConjugation = () => {
     const check = allowForVowels();
-    console.log(
-      "check: ",
-      check,
-      "conjugationValue",
-      conjugationValue.trim().toLowerCase()
-    );
     if (
       conjugationValue.trim().toLowerCase() === check ||
       conjugationValue === undefined
@@ -247,18 +229,21 @@ export default function Home() {
   const genders = ["masculine", "feminine", "indefinite"];
 
   const getGenderColour = (pronounFirstLetter) => {
-    switch (pronounFirstLetter) {
-      case "F":
+    switch (pronounFirstLetter.toLowerCase()) {
+      case "f":
         return "#B794F4";
-      case "M":
+      case "m":
         return "teal";
       default:
-        return "pink.100";
+        return "pink.200";
     }
   };
 
+  const handleVerbClick = (index) => {
+    console.log("index: HFHFHHFHJFHF", index);
+  };
+
   useEffect(() => {
-    console.log("isNavBarOpen: ", isNavBarOpen);
     if (!isOpen) {
       setReveal(false);
     }
@@ -283,6 +268,7 @@ export default function Home() {
     reveal,
     isOpen,
     correctConfirmation,
+    excludedVerbs,
   ]);
 
   return (
@@ -291,13 +277,18 @@ export default function Home() {
         <Head>
           <title>French Verb Drills App</title>
         </Head>
-        <Flex direction={"column"} m={0} w={393} h={350}>
+        <Flex direction={"column"} m={0} w={393}>
           <Box
             onMouseEnter={() => setIsNavBarOpen(true)}
             onMouseLeave={() => setIsNavBarOpen(false)}
             borderBottom="2rem solid #FFFFFF"
           >
-            {isNavBarOpen && <NavBar isNavBarOpen={isNavBarOpen} />}
+            {isNavBarOpen && (
+              <NavBar
+                isNavBarOpen={isNavBarOpen}
+                handleVerbClick={handleVerbClick}
+              />
+            )}
           </Box>
           <Grid templateColumns="repeat(2, 1fr)" m={2} mb={0}>
             <Flex direction={"row"}>
@@ -322,15 +313,14 @@ export default function Home() {
                 h={50}
                 borderRadius={"50%"}
                 bg={
-                  pronounLabel &&
-                  getGenderColour(getCapitalFirstLetter(pronounLabel))
+                  pronounLabel && getGenderColour(getFirstLetter(pronounLabel))
                 }
                 color="white"
                 fontWeight="bold"
                 letterSpacing="wide"
                 fontSize={25}
               >
-                {pronounLabel && getCapitalFirstLetter(pronounLabel)}
+                {pronounLabel && getFirstLetter(pronounLabel)}
               </Center>
             </Flex>
             <Center rowSpan={1} colSpan={1}>
