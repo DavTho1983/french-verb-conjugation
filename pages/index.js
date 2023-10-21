@@ -32,7 +32,7 @@ const components = {
     variants: {
       solid: {
         container: {
-          bg: "#50C878",
+          bg: "teal",
         },
         title: {
           color: "text.50",
@@ -188,7 +188,8 @@ export default function Home() {
   const fonts = ["monospace", "sans-serif"];
 
   const getCapitalFirstLetter = (str) => {
-    return str.split(" ").splice(-1)[0][0].toUpperCase();
+    if (str !== undefined) return str.split(" ").splice(-1)[0][0].toUpperCase();
+    return;
   };
 
   const chooseFont = () => {
@@ -244,6 +245,17 @@ export default function Home() {
   };
 
   const genders = ["masculine", "feminine", "indefinite"];
+
+  const getGenderColour = (pronounFirstLetter) => {
+    switch (pronounFirstLetter) {
+      case "F":
+        return "#B794F4";
+      case "M":
+        return "teal";
+      default:
+        return "pink.100";
+    }
+  };
 
   useEffect(() => {
     console.log("isNavBarOpen: ", isNavBarOpen);
@@ -304,11 +316,15 @@ export default function Home() {
                     .replace("indefinite", "")
                     .replace("  ", " ")}
               </Center>
+
               <Center
                 w={50}
                 h={50}
                 borderRadius={"50%"}
-                bg="#B794F4"
+                bg={
+                  pronounLabel &&
+                  getGenderColour(getCapitalFirstLetter(pronounLabel))
+                }
                 color="white"
                 fontWeight="bold"
                 letterSpacing="wide"
