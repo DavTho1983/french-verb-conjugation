@@ -35,7 +35,7 @@ import verbs from "../../data/english-verb-conjugations.json";
 
 // Component imports
 
-function NavBar({ isNavBarOpen, handleVerbClick }) {
+function NavBar({ isNavBarOpen, handleVerbClick, excludedVerbs, verbs }) {
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [item1Open, setItem1Open] = useState(false);
   const [item2Open, setItem2Open] = useState(false);
@@ -61,7 +61,7 @@ function NavBar({ isNavBarOpen, handleVerbClick }) {
     if (optionsOpen && !isNavBarOpen) {
       setOptionsOpen(false);
     }
-  }, [optionsOpen]);
+  }, [optionsOpen, isNavBarOpen]);
 
   return (
     <SlideFade in={isNavBarOpen} offsetY="-20px">
@@ -88,7 +88,6 @@ function NavBar({ isNavBarOpen, handleVerbClick }) {
             w={393}
             h={getTensesHeight(tenses)}
             p={8}
-            border={!item1Open ? "5px solid white" : "none"}
             bg="teal.500"
             onMouseEnter={() => setItem1Open(true)}
             onMouseLeave={() => setItem1Open(false)}
@@ -117,7 +116,6 @@ function NavBar({ isNavBarOpen, handleVerbClick }) {
                   fontSize={20}
                   fontWeight="semibold"
                   letterSpacing="wide"
-                  //   onClick={() => handleTabClick(index)}
                 >
                   {tense}
                 </Checkbox>
@@ -143,7 +141,7 @@ function NavBar({ isNavBarOpen, handleVerbClick }) {
               verbs
             </Text>
             <Flex direction={"column"} justify={"space-between"}>
-              {Object.keys(verbs).map((verb, index) => (
+              {verbs.map((verb, index) => (
                 <Checkbox
                   key={index}
                   h={16}
@@ -157,7 +155,8 @@ function NavBar({ isNavBarOpen, handleVerbClick }) {
                   fontSize={20}
                   fontWeight="semibold"
                   letterSpacing="wide"
-                  onChange={() => handleVerbClick(index)}
+                  isChecked={[...excludedVerbs].includes(verb)}
+                  onChange={(e) => handleVerbClick(e.target.checked, index)}
                 >
                   {verb}
                 </Checkbox>
@@ -197,7 +196,6 @@ function NavBar({ isNavBarOpen, handleVerbClick }) {
                   fontSize={20}
                   fontWeight="semibold"
                   letterSpacing="wide"
-                  //   onClick={() => handleTabClick(index)}
                 >
                   {pronoun.trim()}
                 </Checkbox>

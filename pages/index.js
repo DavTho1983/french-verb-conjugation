@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import {
@@ -15,6 +15,7 @@ import {
   SlideFade,
   Slide,
   Collapse,
+  Alert,
 } from "@chakra-ui/react";
 
 import { Button, Flex, Input, Text } from "@chakra-ui/react";
@@ -33,6 +34,20 @@ const components = {
       solid: {
         container: {
           bg: "teal",
+        },
+        title: {
+          color: "text.50",
+        },
+        description: {
+          color: "text.50",
+        },
+        icon: {
+          color: "text.50",
+        },
+      },
+      error: {
+        container: {
+          bg: "tomato",
         },
         title: {
           color: "text.50",
@@ -72,13 +87,23 @@ const theme = extendTheme({
   components: components,
 });
 
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value; //assign the value of ref to the argument
+  }, [value]); //this code will run when the value of 'value' changes
+  return ref.current; //in the end, return the current ref value.
+}
+
 export default function Home() {
-  const portalRef = React.useRef();
   const finalRef = React.useRef(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
   const [correctConfirmation, setCorrectConfirmation] = useState();
   const [reveal, setReveal] = useState(false);
+  const [frenchVerbs, setFrenchVerbs] = useState(
+    Object.keys(frenchConjugation)
+  );
   const [isNavBarOpen, setIsNavBarOpen] = useState(false);
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [currentFonts, setCurrentFonts] = useState({
@@ -87,7 +112,12 @@ export default function Home() {
     englishVerbConjugation: "sans-serif",
   });
   const [conjugationValue, setConjugationValue] = useState();
-  const [excludedVerbs, setExcludedVerbs] = useState();
+  const [excludedVerbs, setExcludedVerbs] = useState([
+    "aller",
+    "avoir",
+    "être",
+  ]);
+  const prevVerbs = usePrevious(excludedVerbs);
   const [pronoun, setPronoun] = useState();
   const [frenchPronoun, setFrenchPronoun] = useState();
   const [pronounLabel, setPronounLabel] = useState();
@@ -105,8 +135,8 @@ export default function Home() {
     return;
   };
 
-  const randomProperty = function (obj, excludedKeys) {
-    const keys = Object.keys(obj).filter((x) => !excludedKeys?.has(x));
+  const randomProperty = function (obj) {
+    const keys = Object.keys(obj);
     const randomKey = keys[(keys.length * Math.random()) << 0];
     if (currentRandomPronoun.key !== randomKey) {
       setCurrentRandomPronoun({ key: randomKey, value: obj[randomKey] });
@@ -151,9 +181,23 @@ export default function Home() {
     }
   };
 
-  const refreshVerb = () => {
+  const refreshVerb = (verbs) => {
+    console.log(verbs);
+    if (verbs.length === 0) {
+      console.log("no verbs");
+      setExcludedVerbs(["aller"]);
+      return toast({
+        title: "No verbs!",
+        position: "top",
+        description: "You have no verbs selected. Please select a verb",
+        status: "error",
+        duration: 1000,
+        isClosable: true,
+        variant: "error",
+      });
+    }
     const randomPronoun = randomProperty(pronouns["english"]);
-    const randomVerb = randomProperty(frenchConjugation, excludedVerbs);
+    const randomVerb = randomArrayItem(verbs);
     const _tense = randomArrayItem(tenses);
     setPronoun(randomPronoun.value);
     setFrenchPronoun(pronouns["french"][randomPronoun.key]);
@@ -161,9 +205,9 @@ export default function Home() {
     const englishVerbTense = removeGender("english", randomPronoun.key);
     const frenchVerbTense = removeGender("french", randomPronoun.key);
     const englishVerbTenseWGender =
-      englishConjugation[randomVerb.key][_tense][englishVerbTense];
+      englishConjugation[randomVerb][_tense][englishVerbTense];
     const frenchVerbTenseGender =
-      frenchConjugation[randomVerb.key][_tense][frenchVerbTense.noGender][
+      frenchConjugation[randomVerb][_tense][frenchVerbTense.noGender][
         frenchVerbTense.gender
       ];
     setEnglishVerbConjugation(englishVerbTenseWGender);
@@ -172,9 +216,11 @@ export default function Home() {
     } else setFrenchVerbConjugation(frenchVerbTenseGender);
     setConjugationValue("");
     setTense(_tense);
-    setVerb(randomVerb.key);
+    setVerb(randomVerb);
     chooseFont();
-    finalRef.current.focus();
+    if (!isNavBarOpen) {
+      finalRef.current.focus();
+    }
   };
 
   const vowels = ["a", "e", "i", "o", "u", "y"];
@@ -206,10 +252,11 @@ export default function Home() {
   const checkConjugation = () => {
     const check = allowForVowels();
     if (
-      conjugationValue.trim().toLowerCase() === check ||
-      conjugationValue === undefined
+      (conjugationValue.trim().toLowerCase() === check ||
+        conjugationValue === undefined) &&
+      excludedVerbs.length > 0
     ) {
-      refreshVerb();
+      refreshVerb(excludedVerbs);
       setConsecutiveCorrect(consecutiveCorrect + 1);
       toast({
         title: "Correct!",
@@ -239,11 +286,22 @@ export default function Home() {
     }
   };
 
-  const handleVerbClick = (index) => {
-    console.log("index: HFHFHHFHJFHF", index);
+  const handleVerbClick = (checked, index) => {
+    const _verb = Object.keys(frenchConjugation)[index];
+    if (checked !== false) {
+      let _newExcludedVerbs = excludedVerbs;
+      _newExcludedVerbs.push(_verb);
+      setExcludedVerbs([..._newExcludedVerbs]);
+    } else {
+      const _newExcludedVerbs = excludedVerbs.filter(function (word) {
+        return word !== _verb;
+      });
+      setExcludedVerbs(_newExcludedVerbs);
+    }
   };
 
   useEffect(() => {
+    console.log("EXCLUDED VERBS", excludedVerbs);
     if (!isOpen) {
       setReveal(false);
     }
@@ -251,8 +309,10 @@ export default function Home() {
       setCorrectConfirmation(false);
     }
     if (!pronoun) {
-      console.log("pronoun is empty");
-      refreshVerb();
+      refreshVerb(excludedVerbs);
+    }
+    if (prevVerbs !== excludedVerbs) {
+      refreshVerb(excludedVerbs);
     }
   }, [
     isNavBarOpen,
@@ -287,6 +347,8 @@ export default function Home() {
               <NavBar
                 isNavBarOpen={isNavBarOpen}
                 handleVerbClick={handleVerbClick}
+                excludedVerbs={excludedVerbs}
+                verbs={frenchVerbs}
               />
             )}
           </Box>
@@ -388,9 +450,8 @@ export default function Home() {
           />
         </Flex>
         <SlideFade in={!isNavBarOpen} offsetY="400px" w={393} h={400}>
-          <Flex direction={"column"} align={"center"} w={393} h={400} mt={20}>
+          <Flex direction={"column"} align={"center"} w={393} h={400}>
             <Text
-              mt={20}
               color={"#232D3F"}
               fontSize={30}
               fontFamily={"monospace"}
