@@ -11,7 +11,7 @@ import {
   useDisclosure,
   useToast,
   Fade,
-  ScaleFade,
+  SlideFade,
   Slide,
   Collapse,
 } from "@chakra-ui/react";
@@ -353,8 +353,8 @@ export default function Home() {
             finalFocusRef={finalRef}
           />
         </Flex>
-        {!isNavBarOpen && (
-          <Flex direction={"column"} align={"center"} w={393} h={400} m={20}>
+        <SlideFade in={!isNavBarOpen} offsetY="400px" w={393} h={400}>
+          <Flex direction={"column"} align={"center"} w={393} h={400} mt={20}>
             <Text
               mt={20}
               color={"#232D3F"}
@@ -377,7 +377,7 @@ export default function Home() {
               <Text mb={3}>{consecutiveCorrect}</Text>
             </Center>
           </Flex>
-        )}
+        </SlideFade>
       </div>
     </ChakraProvider>
   );
