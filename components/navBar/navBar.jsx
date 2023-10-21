@@ -91,7 +91,7 @@ function NavBar({ isNavBarOpen, handleVerbClick, excludedVerbs, verbs }) {
             bg="teal.500"
             onMouseEnter={() => setItem1Open(true)}
             onMouseLeave={() => setItem1Open(false)}
-            border={!item2Open ? "5px solid white" : "none"}
+            border={!item1Open ? "5px solid white" : "none"}
           >
             <Text
               color="white"
