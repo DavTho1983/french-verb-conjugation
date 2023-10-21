@@ -45,7 +45,7 @@ function NavBar({ isNavBarOpen }) {
         bg="#B794F4"
         p={5}
         h={20}
-        w={400}
+        w={380}
         mb={8}
         color="white"
         fontFamily={"sans-serif"}
@@ -61,7 +61,7 @@ function NavBar({ isNavBarOpen }) {
         <Stack spacing={8}>
           {" "}
           <Box
-            w={400}
+            w={380}
             h={20}
             border={!item1Open ? "5px solid white" : "none"}
             bg="yellow.200"
@@ -71,7 +71,7 @@ function NavBar({ isNavBarOpen }) {
             1
           </Box>
           <Box
-            w={400}
+            w={380}
             h={20}
             border={!item2Open ? "5px solid white" : "none"}
             bg="tomato"
@@ -81,7 +81,7 @@ function NavBar({ isNavBarOpen }) {
             2
           </Box>
           <Box
-            w={400}
+            w={380}
             h={20}
             border={!item3Open ? "5px solid white" : "none"}
             bg="pink.100"
