@@ -64,7 +64,7 @@ function NavBar({ isNavBarOpen }) {
             w={393}
             h={20}
             border={!item1Open ? "5px solid white" : "none"}
-            bg="yellow.200"
+            bg="teal.500"
             onMouseEnter={() => setItem1Open(true)}
             onMouseLeave={() => setItem1Open(false)}
           >
@@ -74,7 +74,7 @@ function NavBar({ isNavBarOpen }) {
             w={393}
             h={20}
             border={!item2Open ? "5px solid white" : "none"}
-            bg="tomato"
+            bg="#B794F4"
             onMouseEnter={() => setItem2Open(true)}
             onMouseLeave={() => setItem2Open(false)}
           >
@@ -84,7 +84,7 @@ function NavBar({ isNavBarOpen }) {
             w={393}
             h={20}
             border={!item3Open ? "5px solid white" : "none"}
-            bg="pink.100"
+            bg="teal.500"
             onMouseEnter={() => setItem3Open(true)}
             onMouseLeave={() => setItem3Open(false)}
           >

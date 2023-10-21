@@ -285,7 +285,7 @@ export default function Home() {
                 m={3}
                 fontFamily={currentFonts.pronoun}
                 fontSize={18}
-                color={"#44337A"}
+                color={"#232D3F"}
                 h={50}
               >
                 {pronounLabel}
@@ -296,7 +296,7 @@ export default function Home() {
                 m={3}
                 fontFamily={currentFonts.pronoun}
                 fontSize={18}
-                color={"#293241"}
+                color={"#232D3F"}
                 h={50}
               >
                 {verb} {tense}
@@ -314,6 +314,7 @@ export default function Home() {
             <GridItem rowSpan={1} colSpan={1} mb={0}>
               <Input
                 ref={finalRef}
+                color={"#232D3F"}
                 fontSize={20}
                 m={5}
                 mt={2}
@@ -355,8 +356,8 @@ export default function Home() {
         {!isNavBarOpen && (
           <Flex direction={"column"} align={"center"} w={393} h={400} m={20}>
             <Text
-              mt={10}
-              color={"tomato"}
+              mt={20}
+              color={"#232D3F"}
               fontSize={30}
               fontFamily={"monospace"}
               mb={3}
@@ -364,12 +365,12 @@ export default function Home() {
               streak
             </Text>
             <Center
-              bg={"yellow"}
+              bg={"teal"}
               mt={3}
               h={160}
               w={160}
               borderRadius={"50%"}
-              color={"#50C878"}
+              color={"white"}
               fontSize={70}
               fontWeight={"bold"}
             >

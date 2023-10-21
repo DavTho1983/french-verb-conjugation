@@ -32,7 +32,7 @@ function ConjugationContainer({ conjugation }) {
   return (
     <Box
       borderRadius={10}
-      bg="tomato"
+      bg="teal"
       p={5}
       h={100}
       color="white"
