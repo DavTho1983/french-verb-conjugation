@@ -11,6 +11,7 @@ import {
   useDisclosure,
   useToast,
   Fade,
+  Portal,
   SlideFade,
   Slide,
   Collapse,
@@ -72,6 +73,7 @@ const theme = extendTheme({
 });
 
 export default function Home() {
+  const portalRef = React.useRef();
   const finalRef = React.useRef(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
@@ -237,6 +239,8 @@ export default function Home() {
     }
   };
 
+  const genders = ["masculine", "feminine", "indefinite"];
+
   useEffect(() => {
     console.log("isNavBarOpen: ", isNavBarOpen);
     if (!isOpen) {
@@ -288,7 +292,12 @@ export default function Home() {
                 color={"#232D3F"}
                 h={50}
               >
-                {pronounLabel}
+                {pronounLabel &&
+                  pronounLabel
+                    .replace("feminine", "")
+                    .replace("masculine", "")
+                    .replace("indefinite", "")
+                    .replace("  ", " ")}
               </Text>
             </Center>
             <Center rowSpan={1} colSpan={1}>
@@ -302,9 +311,31 @@ export default function Home() {
                 {verb} {tense}
               </Text>
             </Center>
+
             <GridItem rowSpan={1} colSpan={1} mt={2}>
               <ConjugationContainer conjugation={pronoun} />
             </GridItem>
+            <span
+              style={{
+                zIndex: 99999,
+                position: "fixed",
+                marginLeft: "calc(50% - 34px)",
+                marginTop: 50,
+              }}
+            >
+              <Center
+                w={50}
+                h={50}
+                borderRadius={"50%"}
+                bg="#B794F4"
+                color="white"
+                fontWeight="bold"
+                letterSpacing="wide"
+                fontSize={25}
+              >
+                F
+              </Center>
+            </span>
             <GridItem rowSpan={1} colSpan={1} mt={2}>
               <ConjugationContainer conjugation={englishVerbConjugation} />
             </GridItem>
