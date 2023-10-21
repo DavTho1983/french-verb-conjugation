@@ -10,12 +10,12 @@
       "third person plural": "go"
     },
     "imperfect": {
-      "first person singular": "was going",
-      "second person singular": "were going",
-      "third person singular": "was going",
-      "first person plural": "were going",
-      "second person plural": "were going",
-      "third person plural": "were going"
+      "first person singular": "used to go",
+      "second person singular": "used to go",
+      "third person singular": "used to go",
+      "first person plural": "used to go",
+      "second person plural": "used to go",
+      "third person plural": "used to go"
     },
     "conditional": {
       "first person singular": "would go",
@@ -45,12 +45,12 @@
       "third person plural": "have"
     },
     "imperfect": {
-      "first person singular": "had",
-      "second person singular": "had",
-      "third person singular": "had",
-      "first person plural": "had",
-      "second person plural": "had",
-      "third person plural": "had"
+      "first person singular": "used to have",
+      "second person singular": "used to have",
+      "third person singular": "used to have",
+      "first person plural": "used to have",
+      "second person plural": "used to have",
+      "third person plural": "used to have"
     },
     "conditional": {
       "first person singular": "would have",
@@ -67,6 +67,41 @@
       "first person plural": "had",
       "second person plural": "had",
       "third person plural": "had"
+    }
+  },
+  "être": {
+    "infinitive": "to be",
+    "present": {
+      "first person singular": "am",
+      "second person singular": "are",
+      "third person singular": "is",
+      "first person plural": "are",
+      "second person plural": "are",
+      "third person plural": "are"
+    },
+    "imperfect": {
+      "first person singular": "used to be",
+      "second person singular": "used to be",
+      "third person singular": "used to be",
+      "first person plural": "used to be",
+      "second person plural": "used to be",
+      "third person plural": "used to be"
+    },
+    "conditional": {
+      "first person singular": "would have been",
+      "second person singular": "would have been",
+      "third person singular": "would have been",
+      "first person plural": "would have been",
+      "second person plural": "would have been",
+      "third person plural": "would have been"
+    },
+    "passé composé": {
+      "first person singular": "was",
+      "second person singular": "were",
+      "third person singular": "was",
+      "first person plural": "were",
+      "second person plural": "were",
+      "third person plural": "were"
     }
   }
 }

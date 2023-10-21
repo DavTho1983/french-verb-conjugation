@@ -10,6 +10,10 @@ import {
   extendTheme,
   useDisclosure,
   useToast,
+  Fade,
+  ScaleFade,
+  Slide,
+  Collapse,
 } from "@chakra-ui/react";
 
 import { Button, Flex, Input, Text } from "@chakra-ui/react";
@@ -20,6 +24,7 @@ import frenchConjugation from "../data/french-verb-conjugations.json";
 import pronouns from "../data/pronouns.json";
 import tenses from "../data/tenses.json";
 import VerbDrillsModal from "../components/modal/modal";
+import NavBar from "../components/navBar/navBar";
 
 const components = {
   Alert: {
@@ -55,12 +60,12 @@ const theme = extendTheme({
     brand: {
       50: "#44337A",
       100: "#B794F4",
-      500: "#B794F4", // you need this
+      500: "#B794F4",
     },
     text: {
       50: "#ffffff",
       100: "#B794F4",
-      500: "#B794F4", // you need this
+      500: "#B794F4",
     },
   },
   components: components,
@@ -72,6 +77,7 @@ export default function Home() {
   const toast = useToast();
   const [correctConfirmation, setCorrectConfirmation] = useState();
   const [reveal, setReveal] = useState(false);
+  const [isNavBarOpen, setIsNavBarOpen] = useState(false);
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [currentFonts, setCurrentFonts] = useState({
     pronoun: "cursive",
@@ -232,7 +238,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    console.log("CONSECUTIVE CORRECT: ", consecutiveCorrect);
+    console.log("isNavBarOpen: ", isNavBarOpen);
     if (!isOpen) {
       setReveal(false);
     }
@@ -244,6 +250,7 @@ export default function Home() {
       refreshVerb();
     }
   }, [
+    isNavBarOpen,
     consecutiveCorrect,
     pronoun,
     verb,
@@ -264,8 +271,14 @@ export default function Home() {
         <Head>
           <title>French Verb Drills App</title>
         </Head>
-
         <Flex direction={"column"} m={0} w={393} h={350}>
+          <Box
+            onMouseEnter={() => setIsNavBarOpen(true)}
+            onMouseLeave={() => setIsNavBarOpen(false)}
+            borderBottom="2rem solid #FFFFFF"
+          >
+            {isNavBarOpen && <NavBar isNavBarOpen={isNavBarOpen} />}
+          </Box>
           <Grid templateColumns="repeat(2, 1fr)" m={2} mb={0}>
             <Center rowSpan={1} colSpan={1}>
               <Text
@@ -339,29 +352,31 @@ export default function Home() {
             finalFocusRef={finalRef}
           />
         </Flex>
-        <Flex direction={"column"} align={"center"} w={393} h={400} m={20}>
-          <Text
-            mt={10}
-            color={"tomato"}
-            fontSize={30}
-            fontFamily={"monospace"}
-            mb={3}
-          >
-            streak
-          </Text>
-          <Center
-            bg={"yellow"}
-            mt={3}
-            h={160}
-            w={160}
-            borderRadius={"50%"}
-            color={"#50C878"}
-            fontSize={70}
-            fontWeight={"bold"}
-          >
-            <Text mb={3}>{consecutiveCorrect}</Text>
-          </Center>
-        </Flex>
+        {!isNavBarOpen && (
+          <Flex direction={"column"} align={"center"} w={393} h={400} m={20}>
+            <Text
+              mt={10}
+              color={"tomato"}
+              fontSize={30}
+              fontFamily={"monospace"}
+              mb={3}
+            >
+              streak
+            </Text>
+            <Center
+              bg={"yellow"}
+              mt={3}
+              h={160}
+              w={160}
+              borderRadius={"50%"}
+              color={"#50C878"}
+              fontSize={70}
+              fontWeight={"bold"}
+            >
+              <Text mb={3}>{consecutiveCorrect}</Text>
+            </Center>
+          </Flex>
+        )}
       </div>
     </ChakraProvider>
   );

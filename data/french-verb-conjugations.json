@@ -194,5 +194,103 @@
         "feminine": "ont eu"
       }
     }
+  },
+  "être": {
+    "present": {
+      "first person singular": { "masculine": "suis", "feminine": "suis" },
+      "second person singular": { "masculine": "es", "feminine": "es" },
+      "third person singular": {
+        "masculine": "est",
+        "feminine": "est",
+        "indefinite": "est"
+      },
+      "first person plural": { "masculine": "sommes", "feminine": "sommes" },
+      "second person plural": {
+        "masculine": {
+          "singular": "êtes",
+          "plural": "êtes"
+        },
+        "feminine": {
+          "singular": "êtes",
+          "plural": "êtes"
+        }
+      },
+      "third person plural": { "masculine": "sont", "feminine": "sont" }
+    },
+    "imperfect": {
+      "first person singular": { "masculine": "étais", "feminine": "étais" },
+      "second person singular": { "masculine": "étais", "feminine": "étais" },
+      "third person singular": {
+        "masculine": "était",
+        "feminine": "était",
+        "indefinite": "était"
+      },
+      "first person plural": { "masculine": "étions", "feminine": "étions" },
+      "second person plural": {
+        "masculine": {
+          "singular": "étiez",
+          "plural": "étiez"
+        },
+        "feminine": {
+          "singular": "étiez",
+          "plural": "étiez"
+        }
+      },
+      "third person plural": { "masculine": "étaient", "feminine": "étaient" }
+    },
+    "conditional": {
+      "first person singular": { "masculine": "serais", "feminine": "serais" },
+      "second person singular": { "masculine": "serais", "feminine": "serais" },
+      "third person singular": {
+        "masculine": "serait",
+        "feminine": "serait",
+        "indefinite": "serait"
+      },
+      "first person plural": { "masculine": "serions", "feminine": "serions" },
+      "second person plural": {
+        "masculine": {
+          "singular": "seriez",
+          "plural": "seriez"
+        },
+        "feminine": {
+          "singular": "seriez",
+          "plural": "seriez"
+        }
+      },
+      "third person plural": { "masculine": "seraient", "feminine": "seraient" }
+    },
+    "passé composé": {
+      "first person singular": {
+        "masculine": "ai été",
+        "feminine": "ai été"
+      },
+      "second person singular": {
+        "masculine": "as été",
+        "feminine": "as été"
+      },
+      "third person singular": {
+        "masculine": "a été",
+        "feminine": "a été",
+        "indefinite": "a été"
+      },
+      "first person plural": {
+        "masculine": "avons été",
+        "feminine": "avons été"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "avez été",
+          "plural": "avez été"
+        },
+        "feminine": {
+          "singular": "avez été",
+          "plural": "avez été"
+        }
+      },
+      "third person plural": {
+        "masculine": "ont été",
+        "feminine": "ont été"
+      }
+    }
   }
 }
