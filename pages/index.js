@@ -43,9 +43,8 @@ const components = {
   Modal: {
     baseStyle: (props) => ({
       dialog: {
-        maxWidth: ["95%", "95%", "95%"],
-        minWidth: "95%",
         bg: "#FFFFFF",
+        border: "2px solid #B794F4",
       },
     }),
   },
