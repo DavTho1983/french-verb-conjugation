@@ -77,7 +77,7 @@ function NavBar({ isNavBarOpen }) {
         letterSpacing="wide"
         fontSize={20}
         shadow="md"
-        onClick={() => setOptionsOpen(true)}
+        onClick={() => setOptionsOpen(!optionsOpen)}
       >
         options
       </Box>
