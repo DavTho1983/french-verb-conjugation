@@ -288,13 +288,14 @@ export default function Home() {
             {isNavBarOpen && <NavBar isNavBarOpen={isNavBarOpen} />}
           </Box>
           <Grid templateColumns="repeat(2, 1fr)" m={2} mb={0}>
-            <Center rowSpan={1} colSpan={1}>
-              <Text
+            <Flex direction={"row"}>
+              <Center
                 m={3}
                 fontFamily={currentFonts.pronoun}
                 fontSize={18}
                 color={"#232D3F"}
                 h={50}
+                w={100}
               >
                 {pronounLabel &&
                   pronounLabel
@@ -302,8 +303,20 @@ export default function Home() {
                     .replace("masculine", "")
                     .replace("indefinite", "")
                     .replace("  ", " ")}
-              </Text>
-            </Center>
+              </Center>
+              <Center
+                w={50}
+                h={50}
+                borderRadius={"50%"}
+                bg="#B794F4"
+                color="white"
+                fontWeight="bold"
+                letterSpacing="wide"
+                fontSize={25}
+              >
+                {pronounLabel && getCapitalFirstLetter(pronounLabel)}
+              </Center>
+            </Flex>
             <Center rowSpan={1} colSpan={1}>
               <Text
                 m={3}
@@ -319,27 +332,7 @@ export default function Home() {
             <GridItem rowSpan={1} colSpan={1} mt={2}>
               <ConjugationContainer conjugation={pronoun} />
             </GridItem>
-            <span
-              style={{
-                zIndex: 99999,
-                position: "fixed",
-                marginLeft: "calc(50% - 34px)",
-                marginTop: 60,
-              }}
-            >
-              <Center
-                w={50}
-                h={50}
-                borderRadius={"50%"}
-                bg="#B794F4"
-                color="white"
-                fontWeight="bold"
-                letterSpacing="wide"
-                fontSize={25}
-              >
-                {pronounLabel && getCapitalFirstLetter(pronounLabel)}
-              </Center>
-            </span>
+
             <GridItem rowSpan={1} colSpan={1} mt={2}>
               <ConjugationContainer conjugation={englishVerbConjugation} />
             </GridItem>
