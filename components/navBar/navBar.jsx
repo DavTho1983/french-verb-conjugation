@@ -41,6 +41,19 @@ function NavBar({ isNavBarOpen }) {
   const [item2Open, setItem2Open] = useState(false);
   const [item3Open, setItem3Open] = useState(false);
 
+  const pronounsDeDuped = [
+    ...new Set(
+      Object.keys(pronouns["english"]).map((pronoun) => {
+        return pronoun
+          .replace("feminine", "")
+          .replace("masculine", "")
+          .replace("indefinite", "")
+          .replace("  ", " ")
+          .trim();
+      })
+    ),
+  ];
+
   const getTensesHeight = (t) => {
     return t * 20;
   };
@@ -120,6 +133,15 @@ function NavBar({ isNavBarOpen }) {
             onMouseEnter={() => setItem2Open(true)}
             onMouseLeave={() => setItem2Open(false)}
           >
+            <Text
+              color="white"
+              fontFamily={"sans-serif"}
+              fontWeight="semibold"
+              letterSpacing="wide"
+              fontSize={20}
+            >
+              verbs
+            </Text>
             <Flex direction={"column"} justify={"space-between"}>
               {Object.keys(verbs).map((verb, index) => (
                 <Checkbox
@@ -144,13 +166,43 @@ function NavBar({ isNavBarOpen }) {
           </Box>
           <Box
             w={393}
-            h={20}
+            h={getTensesHeight(Object.keys(verbs))}
+            p={8}
             border={!item3Open ? "5px solid white" : "none"}
             bg="teal.500"
             onMouseEnter={() => setItem3Open(true)}
             onMouseLeave={() => setItem3Open(false)}
           >
-            3
+            <Text
+              color="white"
+              fontFamily={"sans-serif"}
+              fontWeight="semibold"
+              letterSpacing="wide"
+              fontSize={20}
+            >
+              pronouns
+            </Text>
+            <Flex direction={"column"} justify={"space-between"}>
+              {pronounsDeDuped.map((pronoun, index) => (
+                <Checkbox
+                  key={index}
+                  h={16}
+                  w={300}
+                  m={2}
+                  size="lg"
+                  bg={"teal.500"}
+                  color="white"
+                  colorScheme="purple"
+                  fontFamily={"sans-serif"}
+                  fontSize={20}
+                  fontWeight="semibold"
+                  letterSpacing="wide"
+                  //   onClick={() => handleTabClick(index)}
+                >
+                  {pronoun.trim()}
+                </Checkbox>
+              ))}
+            </Flex>
           </Box>
         </Stack>
       )}
