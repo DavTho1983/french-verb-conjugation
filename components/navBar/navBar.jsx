@@ -22,9 +22,14 @@ import {
   Container,
   SlideFade,
   Stack,
+  Center,
+  Checkbox,
 } from "@chakra-ui/react";
 
 import styles from "./navBar.module.css";
+
+import tenses from "../../data/tenses.json";
+import pronouns from "../../data/pronouns.json";
 
 // Component imports
 
@@ -33,6 +38,10 @@ function NavBar({ isNavBarOpen }) {
   const [item1Open, setItem1Open] = useState(false);
   const [item2Open, setItem2Open] = useState(false);
   const [item3Open, setItem3Open] = useState(false);
+
+  const getTensesHeight = (t) => {
+    return t * 20;
+  };
   useEffect(() => {
     if (optionsOpen && !isNavBarOpen) {
       setOptionsOpen(false);
@@ -62,13 +71,34 @@ function NavBar({ isNavBarOpen }) {
           {" "}
           <Box
             w={393}
-            h={20}
+            h={getTensesHeight()}
+            p={8}
             border={!item1Open ? "5px solid white" : "none"}
             bg="teal.500"
             onMouseEnter={() => setItem1Open(true)}
             onMouseLeave={() => setItem1Open(false)}
           >
-            1
+            <Flex direction={"column"} justify={"space-between"}>
+              {tenses.map((tense, index) => (
+                <Checkbox
+                  key={index}
+                  h={16}
+                  w={16}
+                  m={2}
+                  size="lg"
+                  bg={"teal.500"}
+                  color="white"
+                  colorScheme="purple"
+                  fontFamily={"sans-serif"}
+                  fontSize={20}
+                  fontWeight="semibold"
+                  letterSpacing="wide"
+                  //   onClick={() => handleTabClick(index)}
+                >
+                  {tense}
+                </Checkbox>
+              ))}
+            </Flex>
           </Box>
           <Box
             w={393}
