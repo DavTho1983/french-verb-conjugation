@@ -187,6 +187,10 @@ export default function Home() {
 
   const fonts = ["monospace", "sans-serif"];
 
+  const getCapitalFirstLetter = (str) => {
+    return str.split(" ").splice(-1)[0][0].toUpperCase();
+  };
+
   const chooseFont = () => {
     return setCurrentFonts({
       pronoun: randomArrayItem(fonts),
@@ -320,7 +324,7 @@ export default function Home() {
                 zIndex: 99999,
                 position: "fixed",
                 marginLeft: "calc(50% - 34px)",
-                marginTop: 50,
+                marginTop: 60,
               }}
             >
               <Center
@@ -333,7 +337,7 @@ export default function Home() {
                 letterSpacing="wide"
                 fontSize={25}
               >
-                F
+                {pronounLabel && getCapitalFirstLetter(pronounLabel)}
               </Center>
             </span>
             <GridItem rowSpan={1} colSpan={1} mt={2}>
