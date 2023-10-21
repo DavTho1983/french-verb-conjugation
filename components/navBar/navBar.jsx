@@ -24,12 +24,14 @@ import {
   Stack,
   Center,
   Checkbox,
+  Text,
 } from "@chakra-ui/react";
 
 import styles from "./navBar.module.css";
 
 import tenses from "../../data/tenses.json";
 import pronouns from "../../data/pronouns.json";
+import verbs from "../../data/english-verb-conjugations.json";
 
 // Component imports
 
@@ -71,13 +73,22 @@ function NavBar({ isNavBarOpen }) {
           {" "}
           <Box
             w={393}
-            h={getTensesHeight()}
+            h={getTensesHeight(tenses)}
             p={8}
             border={!item1Open ? "5px solid white" : "none"}
             bg="teal.500"
             onMouseEnter={() => setItem1Open(true)}
             onMouseLeave={() => setItem1Open(false)}
           >
+            <Text
+              color="white"
+              fontFamily={"sans-serif"}
+              fontWeight="semibold"
+              letterSpacing="wide"
+              fontSize={20}
+            >
+              tenses
+            </Text>
             <Flex direction={"column"} justify={"space-between"}>
               {tenses.map((tense, index) => (
                 <Checkbox
@@ -102,13 +113,34 @@ function NavBar({ isNavBarOpen }) {
           </Box>
           <Box
             w={393}
-            h={20}
+            h={getTensesHeight(Object.keys(verbs))}
+            p={8}
             border={!item2Open ? "5px solid white" : "none"}
             bg="#B794F4"
             onMouseEnter={() => setItem2Open(true)}
             onMouseLeave={() => setItem2Open(false)}
           >
-            2
+            <Flex direction={"column"} justify={"space-between"}>
+              {Object.keys(verbs).map((verb, index) => (
+                <Checkbox
+                  key={index}
+                  h={16}
+                  w={16}
+                  m={2}
+                  size="lg"
+                  bg={"#B794F4"}
+                  color="white"
+                  colorScheme="purple"
+                  fontFamily={"sans-serif"}
+                  fontSize={20}
+                  fontWeight="semibold"
+                  letterSpacing="wide"
+                  //   onClick={() => handleTabClick(index)}
+                >
+                  {verb}
+                </Checkbox>
+              ))}
+            </Flex>
           </Box>
           <Box
             w={393}
