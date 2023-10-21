@@ -71,11 +71,17 @@ function VerbDrillsModal({
           )}
         </ModalBody>
 
-        <ModalFooter>
-          <Button colorScheme="blue" mr={3} onClick={onClose}>
+        <ModalFooter mr={0}>
+          <Button colorScheme="blue" w={150} ml={5} mr={2.5} onClick={onClose}>
             Try again
           </Button>
-          <Button variant="ghost" onClick={() => revealAnswer()}>
+          <Button
+            variant="ghost"
+            w={150}
+            ml={2.5}
+            mr={5}
+            onClick={() => revealAnswer()}
+          >
             Reveal answer
           </Button>
         </ModalFooter>

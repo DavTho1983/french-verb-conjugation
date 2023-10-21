@@ -46,7 +46,6 @@ const components = {
         maxWidth: ["95%", "95%", "95%"],
         minWidth: "95%",
         bg: "#FFFFFF",
-        border: "4px solid #B794F4",
       },
     }),
   },
@@ -74,6 +73,7 @@ export default function Home() {
   const toast = useToast();
   const [correctConfirmation, setCorrectConfirmation] = useState();
   const [reveal, setReveal] = useState(false);
+  const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [currentFonts, setCurrentFonts] = useState({
     pronoun: "cursive",
     verb: "monospace",
@@ -216,6 +216,7 @@ export default function Home() {
       conjugationValue === undefined
     ) {
       refreshVerb();
+      setConsecutiveCorrect(consecutiveCorrect + 1);
       toast({
         title: "Correct!",
         position: "top",
@@ -226,12 +227,13 @@ export default function Home() {
         variant: "solid",
       });
     } else {
+      setConsecutiveCorrect(0);
       onOpen();
     }
   };
 
   useEffect(() => {
-    console.log("isOpen: ", isOpen);
+    console.log("CONSECUTIVE CORRECT: ", consecutiveCorrect);
     if (!isOpen) {
       setReveal(false);
     }
@@ -243,6 +245,7 @@ export default function Home() {
       refreshVerb();
     }
   }, [
+    consecutiveCorrect,
     pronoun,
     verb,
     currentFonts,
@@ -337,7 +340,29 @@ export default function Home() {
             finalFocusRef={finalRef}
           />
         </Flex>
-        <Flex w={393} h={400} />
+        <Flex direction={"column"} align={"center"} w={393} h={400} m={20}>
+          <Text
+            mt={10}
+            color={"tomato"}
+            fontSize={30}
+            fontFamily={"monospace"}
+            mb={3}
+          >
+            streak
+          </Text>
+          <Center
+            bg={"yellow"}
+            mt={3}
+            h={160}
+            w={160}
+            borderRadius={"50%"}
+            color={"#50C878"}
+            fontSize={70}
+            fontWeight={"bold"}
+          >
+            <Text mb={3}>{consecutiveCorrect}</Text>
+          </Center>
+        </Flex>
       </div>
     </ChakraProvider>
   );
