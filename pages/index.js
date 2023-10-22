@@ -266,12 +266,23 @@ export default function Home() {
       setPronounLabel(randomPronoun);
       const englishVerbTense = removeGender("english", randomPronoun);
       const frenchVerbTense = removeGender("french", randomPronoun);
+
       const englishVerbTenseWGender =
         englishConjugation[randomVerb][_tense][englishVerbTense];
       const frenchVerbTenseGender =
         frenchConjugation[randomVerb][_tense][frenchVerbTense.noGender][
-          frenchVerbTense.gender
+          randomGender
         ];
+      console.log(
+        "frenchVerbTense",
+        frenchVerbTense,
+        "englishVerbTense",
+        englishVerbTense,
+        "gender",
+        randomGender,
+        "frenchVerbTenseGender",
+        frenchVerbTenseGender
+      );
       setEnglishVerbConjugation(englishVerbTenseWGender);
       if (frenchVerbTenseGender.hasOwnProperty("singular")) {
         setFrenchVerbConjugation(frenchVerbTenseGender["singular"]);
@@ -308,6 +319,7 @@ export default function Home() {
       check = "j'" + frenchVerbConjugation;
     } else {
       check = frenchPronoun + " " + frenchVerbConjugation;
+      console.log("THIS CHECK", check, frenchPronoun, frenchVerbConjugation);
     }
     return check.toLowerCase();
   };
