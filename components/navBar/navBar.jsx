@@ -1,41 +1,22 @@
 // Core React dependencies
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Input,
-  InputGroup,
-  Th,
-  Tr,
-  Square,
-  Table,
-  Tbody,
-  Thead,
-  Td,
-  Tab,
-  TabList,
-  Tabs,
-  Select,
-  InputLeftElement,
-  Container,
-  SlideFade,
-  Stack,
-  Center,
-  Checkbox,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Flex, SlideFade, Stack, Checkbox, Text } from "@chakra-ui/react";
 
 import styles from "./navBar.module.css";
 
 import tenses from "../../data/tenses.json";
 import pronouns from "../../data/pronouns.json";
-import verbs from "../../data/english-verb-conjugations.json";
 
 // Component imports
 
-function NavBar({ isNavBarOpen, handleVerbClick, excludedVerbs, verbs }) {
+function NavBar({
+  isNavBarOpen,
+  handleCheckBoxClick,
+  currentVerbs,
+  verbs,
+  currentTenses,
+  tenses,
+}) {
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [item1Open, setItem1Open] = useState(false);
   const [item2Open, setItem2Open] = useState(false);
@@ -117,6 +98,10 @@ function NavBar({ isNavBarOpen, handleVerbClick, excludedVerbs, verbs }) {
                   fontSize={20}
                   fontWeight="semibold"
                   letterSpacing="wide"
+                  isChecked={[...currentTenses].includes(tense)}
+                  onChange={(e) =>
+                    handleCheckBoxClick(e.target.checked, "tense", index)
+                  }
                 >
                   {tense}
                 </Checkbox>
@@ -156,8 +141,10 @@ function NavBar({ isNavBarOpen, handleVerbClick, excludedVerbs, verbs }) {
                   fontSize={20}
                   fontWeight="semibold"
                   letterSpacing="wide"
-                  isChecked={[...excludedVerbs].includes(verb)}
-                  onChange={(e) => handleVerbClick(e.target.checked, index)}
+                  isChecked={[...currentVerbs].includes(verb)}
+                  onChange={(e) =>
+                    handleCheckBoxClick(e.target.checked, "verb", index)
+                  }
                 >
                   {verb}
                 </Checkbox>

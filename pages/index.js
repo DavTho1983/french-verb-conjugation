@@ -10,12 +10,7 @@ import {
   extendTheme,
   useDisclosure,
   useToast,
-  Fade,
-  Portal,
   SlideFade,
-  Slide,
-  Collapse,
-  Alert,
 } from "@chakra-ui/react";
 
 import { Button, Flex, Input, Text } from "@chakra-ui/react";
@@ -96,15 +91,12 @@ function usePrevious(value) {
 }
 
 export default function Home() {
+  //PAGE STATES
   const finalRef = React.useRef(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
   const [correctConfirmation, setCorrectConfirmation] = useState();
   const [reveal, setReveal] = useState(false);
-  const [frenchVerbs, setFrenchVerbs] = useState(
-    Object.keys(frenchConjugation)
-  );
-  const [isNavBarOpen, setIsNavBarOpen] = useState(false);
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [currentFonts, setCurrentFonts] = useState({
     pronoun: "cursive",
@@ -112,13 +104,22 @@ export default function Home() {
     englishVerbConjugation: "sans-serif",
   });
   const [conjugationValue, setConjugationValue] = useState();
-  const [excludedVerbs, setExcludedVerbs] = useState([
-    "aller",
-    "avoir",
-    "être",
-  ]);
-  const prevVerbs = usePrevious(excludedVerbs);
+
+  // NAVBAR MENU INITIAL STATE
+  const [isNavBarOpen, setIsNavBarOpen] = useState(false);
   const [pronoun, setPronoun] = useState();
+
+  // NAVBAR MENU NEW STATE
+  const [frenchVerbs, setFrenchVerbs] = useState(
+    Object.keys(frenchConjugation)
+  );
+  const [currentVerbs, setCurrentVerbs] = useState(
+    Object.keys(frenchConjugation)
+  );
+  const [currentTenses, setCurrentTenses] = useState(tenses);
+  const prevVerbs = usePrevious(currentVerbs);
+  const prevTenses = usePrevious(currentTenses);
+
   const [frenchPronoun, setFrenchPronoun] = useState();
   const [pronounLabel, setPronounLabel] = useState();
   const [verb, setVerb] = useState("avoir");
@@ -181,11 +182,9 @@ export default function Home() {
     }
   };
 
-  const refreshVerb = (verbs) => {
-    console.log(verbs);
-    if (verbs.length === 0) {
-      console.log("no verbs");
-      setExcludedVerbs(["aller"]);
+  const refresh = () => {
+    if (currentVerbs.length === 0) {
+      setCurrentVerbs(["aller"]);
       return toast({
         title: "No verbs!",
         position: "top",
@@ -197,8 +196,8 @@ export default function Home() {
       });
     }
     const randomPronoun = randomProperty(pronouns["english"]);
-    const randomVerb = randomArrayItem(verbs);
-    const _tense = randomArrayItem(tenses);
+    const randomVerb = randomArrayItem(currentVerbs);
+    const _tense = randomArrayItem(currentTenses);
     setPronoun(randomPronoun.value);
     setFrenchPronoun(pronouns["french"][randomPronoun.key]);
     setPronounLabel(randomPronoun.key);
@@ -254,9 +253,9 @@ export default function Home() {
     if (
       (conjugationValue.trim().toLowerCase() === check ||
         conjugationValue === undefined) &&
-      excludedVerbs.length > 0
+      currentVerbs.length > 0
     ) {
-      refreshVerb(excludedVerbs);
+      refresh();
       setConsecutiveCorrect(consecutiveCorrect + 1);
       toast({
         title: "Correct!",
@@ -286,22 +285,39 @@ export default function Home() {
     }
   };
 
-  const handleVerbClick = (checked, index) => {
-    const _verb = Object.keys(frenchConjugation)[index];
-    if (checked !== false) {
-      let _newExcludedVerbs = excludedVerbs;
-      _newExcludedVerbs.push(_verb);
-      setExcludedVerbs([..._newExcludedVerbs]);
-    } else {
-      const _newExcludedVerbs = excludedVerbs.filter(function (word) {
-        return word !== _verb;
-      });
-      setExcludedVerbs(_newExcludedVerbs);
+  const handleCheckBoxClick = (checked, label, index) => {
+    switch (label) {
+      case "verb": {
+        const _verb = frenchVerbs[index];
+        console.log("VERB", _verb);
+        if (checked !== false) {
+          let _newcurrentVerbs = currentVerbs;
+          _newcurrentVerbs.push(_verb);
+          setCurrentVerbs([..._newcurrentVerbs]);
+        } else {
+          const _newcurrentVerbs = currentVerbs.filter(function (v) {
+            return v !== _verb;
+          });
+          setCurrentVerbs(_newcurrentVerbs);
+        }
+      }
+      case "tense": {
+        const _tense = tenses[index];
+        if (checked !== false) {
+          let _newcurrentTenses = currentTenses;
+          _newcurrentTenses.push(_tense);
+          setCurrentTenses([..._newcurrentTenses]);
+        } else {
+          const _newcurrentTenses = currentTenses.filter(function (t) {
+            return t !== _tense;
+          });
+          setCurrentTenses(_newcurrentTenses);
+        }
+      }
     }
   };
 
   useEffect(() => {
-    console.log("EXCLUDED VERBS", excludedVerbs);
     if (!isOpen) {
       setReveal(false);
     }
@@ -309,10 +325,13 @@ export default function Home() {
       setCorrectConfirmation(false);
     }
     if (!pronoun) {
-      refreshVerb(excludedVerbs);
+      refresh();
     }
-    if (prevVerbs !== excludedVerbs) {
-      refreshVerb(excludedVerbs);
+    if (prevVerbs !== currentVerbs) {
+      refresh();
+    }
+    if (prevTenses !== currentTenses) {
+      refresh();
     }
   }, [
     isNavBarOpen,
@@ -328,7 +347,8 @@ export default function Home() {
     reveal,
     isOpen,
     correctConfirmation,
-    excludedVerbs,
+    currentVerbs,
+    currentTenses,
   ]);
 
   return (
@@ -346,9 +366,11 @@ export default function Home() {
             {isNavBarOpen && (
               <NavBar
                 isNavBarOpen={isNavBarOpen}
-                handleVerbClick={handleVerbClick}
-                excludedVerbs={excludedVerbs}
+                handleCheckBoxClick={handleCheckBoxClick}
+                currentVerbs={currentVerbs}
                 verbs={frenchVerbs}
+                currentTenses={currentTenses}
+                tenses={tenses}
               />
             )}
           </Box>
