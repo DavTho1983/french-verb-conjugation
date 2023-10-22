@@ -252,8 +252,13 @@ export default function Home() {
   const refresh = () => {
     if (checkDataComplete() === true) {
       const randomPronoun = randomArrayItem(currentPronouns);
-      const randomGender = randomArrayItem(genders);
-      console.log("RANDOM PRONOUN", randomPronoun);
+      let randomGender;
+      if (randomPronoun === "third person singular") {
+        randomGender = randomArrayItem(indefiniteGenders);
+      } else {
+        randomGender = randomArrayItem(genders);
+      }
+      console.log("RANDOM GENDER", randomGender);
       const randomVerb = randomArrayItem(currentVerbs);
       const _tense = randomArrayItem(currentTenses);
       setGender(randomGender);
@@ -340,7 +345,8 @@ export default function Home() {
     }
   };
 
-  const genders = ["masculine", "feminine", "indefinite"];
+  const genders = ["masculine", "feminine"];
+  const indefiniteGenders = ["masculine", "feminine"];
 
   const getGenderColour = (pronounFirstLetter) => {
     switch (pronounFirstLetter.toLowerCase()) {
@@ -476,15 +482,13 @@ export default function Home() {
                 w={50}
                 h={50}
                 borderRadius={"50%"}
-                bg={
-                  pronounLabel && getGenderColour(getFirstLetter(pronounLabel))
-                }
+                bg={gender && getGenderColour(getFirstLetter(gender))}
                 color="white"
                 fontWeight="bold"
                 letterSpacing="wide"
                 fontSize={25}
               >
-                {pronounLabel && getFirstLetter(pronounLabel)}
+                {gender && getFirstLetter(gender)}
               </Center>
             </Flex>
             <Center rowSpan={1} colSpan={1}>
