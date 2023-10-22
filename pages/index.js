@@ -258,29 +258,20 @@ export default function Home() {
       } else {
         randomGender = randomArrayItem(genders);
       }
-      console.log("RANDOM GENDER", randomGender);
       const randomVerb = randomArrayItem(currentVerbs);
       const _tense = randomArrayItem(currentTenses);
       setGender(randomGender);
       setPronoun(randomPronoun);
       setFrenchPronoun(pronouns["french"][randomPronoun + " " + randomGender]);
-      console.log(
-        "FRENCH PRONOUN",
-        pronouns["french"][randomPronoun + " " + randomGender]
-      );
       setPronounLabel(randomPronoun);
       const englishVerbTense = removeGender("english", randomPronoun);
-      console.log("ENGLISH VERB TENSE", englishVerbTense);
       const frenchVerbTense = removeGender("french", randomPronoun);
-      console.log("FRENCH VERB TENSE", frenchVerbTense);
       const englishVerbTenseWGender =
         englishConjugation[randomVerb][_tense][englishVerbTense];
-      console.log("englishVerbTenseWGender", englishVerbTenseWGender);
       const frenchVerbTenseGender =
         frenchConjugation[randomVerb][_tense][frenchVerbTense.noGender][
           frenchVerbTense.gender
         ];
-      console.log("frenchVerbTenseGender", frenchVerbTenseGender);
       setEnglishVerbConjugation(englishVerbTenseWGender);
       if (frenchVerbTenseGender.hasOwnProperty("singular")) {
         setFrenchVerbConjugation(frenchVerbTenseGender["singular"]);
@@ -363,7 +354,6 @@ export default function Home() {
     switch (label) {
       case "verb": {
         const _verb = frenchVerbs[index];
-        console.log("VERB", _verb);
         if (checked !== false) {
           let _newcurrentVerbs = currentVerbs;
           _newcurrentVerbs.push(_verb);
@@ -389,7 +379,6 @@ export default function Home() {
         }
       }
       case "pronoun": {
-        console.log("PRONOUN", pronounsDeDupedNoGender[index], currentPronouns);
         const _pronoun = pronounsDeDupedNoGender[index];
         if (checked !== false) {
           let _newcurrentPronouns = currentPronouns;
@@ -406,7 +395,6 @@ export default function Home() {
   };
 
   useEffect(() => {
-    console.log("PRONOUN", pronouns["english"], pronoun, gender);
     if (!isOpen) {
       setReveal(false);
     }
