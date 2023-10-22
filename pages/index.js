@@ -461,17 +461,11 @@ export default function Home() {
               <Center
                 m={3}
                 fontFamily={currentFonts.pronoun}
-                fontSize={18}
                 color={"#232D3F"}
                 h={50}
                 w={100}
               >
-                {pronounLabel &&
-                  pronounLabel
-                    .replace("feminine", "")
-                    .replace("masculine", "")
-                    .replace("indefinite", "")
-                    .replace("  ", " ")}
+                {pronounLabel}
               </Center>
 
               <Center
@@ -554,7 +548,7 @@ export default function Home() {
           />
         </Flex>
         <SlideFade in={!isNavBarOpen} offsetY="400px" w={393} h={400}>
-          <Flex direction={"column"} align={"center"} w={393} h={400}>
+          <Flex direction={"column"} align={"center"} w={393}>
             <Text
               color={"#232D3F"}
               fontSize={30}

@@ -34,11 +34,11 @@ function ConjugationContainer({ conjugation }) {
       borderRadius={10}
       bg="teal"
       p={5}
-      h={100}
+      h={120}
       color="white"
       fontWeight="semibold"
       letterSpacing="wide"
-      fontSize={20}
+      fontSize={18}
       m={5}
       className={styles.title}
     >
