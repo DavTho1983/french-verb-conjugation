@@ -128,6 +128,7 @@ export default function Home() {
   const [isNavBarOpen, setIsNavBarOpen] = useState(false);
 
   // NAVBAR MENU NEW STATE
+  const [gender, setGender] = useState();
   const [pronoun, setPronoun] = useState();
   const [frenchVerbs, setFrenchVerbs] = useState(
     Object.keys(frenchConjugation)
@@ -255,6 +256,7 @@ export default function Home() {
       console.log("RANDOM PRONOUN", randomPronoun);
       const randomVerb = randomArrayItem(currentVerbs);
       const _tense = randomArrayItem(currentTenses);
+      setGender(randomGender);
       setPronoun(randomPronoun);
       setFrenchPronoun(pronouns["french"][randomPronoun + " " + randomGender]);
       console.log(
@@ -398,6 +400,7 @@ export default function Home() {
   };
 
   useEffect(() => {
+    console.log("PRONOUN", pronouns["english"], pronoun, gender);
     if (!isOpen) {
       setReveal(false);
     }
@@ -413,6 +416,7 @@ export default function Home() {
       refresh();
     }
   }, [
+    gender,
     isNavBarOpen,
     consecutiveCorrect,
     pronoun,
@@ -496,7 +500,9 @@ export default function Home() {
             </Center>
 
             <GridItem rowSpan={1} colSpan={1} mt={2}>
-              <ConjugationContainer conjugation={pronoun} />
+              <ConjugationContainer
+                conjugation={pronouns["english"][pronoun + " " + gender]}
+              />
             </GridItem>
 
             <GridItem rowSpan={1} colSpan={1} mt={2}>
