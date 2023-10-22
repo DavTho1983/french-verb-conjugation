@@ -16,24 +16,13 @@ function NavBar({
   verbs,
   currentTenses,
   tenses,
+  currentPronouns,
+  pronouns,
 }) {
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [item1Open, setItem1Open] = useState(false);
   const [item2Open, setItem2Open] = useState(false);
   const [item3Open, setItem3Open] = useState(false);
-
-  const pronounsDeDuped = [
-    ...new Set(
-      Object.keys(pronouns["english"]).map((pronoun) => {
-        return pronoun
-          .replace("feminine", "")
-          .replace("masculine", "")
-          .replace("indefinite", "")
-          .replace("  ", " ")
-          .trim();
-      })
-    ),
-  ];
 
   const getTensesHeight = (t) => {
     return t * 20;
@@ -170,7 +159,7 @@ function NavBar({
               pronouns
             </Text>
             <Flex direction={"column"} justify={"space-between"}>
-              {pronounsDeDuped.map((pronoun, index) => (
+              {pronouns.map((pronoun, index) => (
                 <Checkbox
                   key={index}
                   h={16}
@@ -184,6 +173,10 @@ function NavBar({
                   fontSize={20}
                   fontWeight="semibold"
                   letterSpacing="wide"
+                  isChecked={[...currentPronouns].includes(pronoun)}
+                  onChange={(e) =>
+                    handleCheckBoxClick(e.target.checked, "pronoun", index)
+                  }
                 >
                   {pronoun.trim()}
                 </Checkbox>

@@ -91,6 +91,25 @@ function usePrevious(value) {
 }
 
 export default function Home() {
+  const pronounsDeDupedNoGender = [
+    ...new Set(
+      Object.keys(pronouns["english"]).map((pronoun) => {
+        return pronoun
+          .replace("feminine", "")
+          .replace("masculine", "")
+          .replace("indefinite", "")
+          .replace("  ", " ")
+          .trim();
+      })
+    ),
+  ];
+  const pronounsDeDuped = [
+    ...new Set(
+      Object.keys(pronouns["english"]).map((pronoun) => {
+        return pronoun;
+      })
+    ),
+  ];
   //PAGE STATES
   const finalRef = React.useRef(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -107,9 +126,9 @@ export default function Home() {
 
   // NAVBAR MENU INITIAL STATE
   const [isNavBarOpen, setIsNavBarOpen] = useState(false);
-  const [pronoun, setPronoun] = useState();
 
   // NAVBAR MENU NEW STATE
+  const [pronoun, setPronoun] = useState();
   const [frenchVerbs, setFrenchVerbs] = useState(
     Object.keys(frenchConjugation)
   );
@@ -117,8 +136,12 @@ export default function Home() {
     Object.keys(frenchConjugation)
   );
   const [currentTenses, setCurrentTenses] = useState(tenses);
+  const [currentPronouns, setCurrentPronouns] = useState(
+    pronounsDeDupedNoGender
+  );
   const prevVerbs = usePrevious(currentVerbs);
   const prevTenses = usePrevious(currentTenses);
+  const prevPronouns = usePrevious(currentPronouns);
 
   const [frenchPronoun, setFrenchPronoun] = useState();
   const [pronounLabel, setPronounLabel] = useState();
@@ -182,43 +205,86 @@ export default function Home() {
     }
   };
 
-  const refresh = () => {
+  const checkDataComplete = () => {
     if (currentVerbs.length === 0) {
       setCurrentVerbs(["aller"]);
-      return toast({
+      toast({
         title: "No verbs!",
         position: "top",
-        description: "You have no verbs selected. Please select a verb",
+        description: "Please select a verb",
         status: "error",
         duration: 1000,
         isClosable: true,
         variant: "error",
       });
+      return false;
     }
-    const randomPronoun = randomProperty(pronouns["english"]);
-    const randomVerb = randomArrayItem(currentVerbs);
-    const _tense = randomArrayItem(currentTenses);
-    setPronoun(randomPronoun.value);
-    setFrenchPronoun(pronouns["french"][randomPronoun.key]);
-    setPronounLabel(randomPronoun.key);
-    const englishVerbTense = removeGender("english", randomPronoun.key);
-    const frenchVerbTense = removeGender("french", randomPronoun.key);
-    const englishVerbTenseWGender =
-      englishConjugation[randomVerb][_tense][englishVerbTense];
-    const frenchVerbTenseGender =
-      frenchConjugation[randomVerb][_tense][frenchVerbTense.noGender][
-        frenchVerbTense.gender
-      ];
-    setEnglishVerbConjugation(englishVerbTenseWGender);
-    if (frenchVerbTenseGender.hasOwnProperty("singular")) {
-      setFrenchVerbConjugation(frenchVerbTenseGender["singular"]);
-    } else setFrenchVerbConjugation(frenchVerbTenseGender);
-    setConjugationValue("");
-    setTense(_tense);
-    setVerb(randomVerb);
-    chooseFont();
-    if (!isNavBarOpen) {
-      finalRef.current.focus();
+    if (currentTenses.length === 0) {
+      setCurrentTenses(["present"]);
+      toast({
+        title: "No tenses!",
+        position: "top",
+        description: "Please select a tense",
+        status: "error",
+        duration: 1000,
+        isClosable: true,
+        variant: "error",
+      });
+      return false;
+    }
+    if (currentPronouns.length === 0) {
+      setCurrentPronouns(["first person singular"]);
+      toast({
+        title: "No pronouns!",
+        position: "top",
+        description: "Please select a pronoun",
+        status: "error",
+        duration: 1000,
+        isClosable: true,
+        variant: "error",
+      });
+      return false;
+    }
+    return true;
+  };
+
+  const refresh = () => {
+    if (checkDataComplete() === true) {
+      const randomPronoun = randomArrayItem(currentPronouns);
+      const randomGender = randomArrayItem(genders);
+      console.log("RANDOM PRONOUN", randomPronoun);
+      const randomVerb = randomArrayItem(currentVerbs);
+      const _tense = randomArrayItem(currentTenses);
+      setPronoun(randomPronoun);
+      setFrenchPronoun(pronouns["french"][randomPronoun + " " + randomGender]);
+      console.log(
+        "FRENCH PRONOUN",
+        pronouns["french"][randomPronoun + " " + randomGender]
+      );
+      setPronounLabel(randomPronoun);
+      const englishVerbTense = removeGender("english", randomPronoun);
+      console.log("ENGLISH VERB TENSE", englishVerbTense);
+      const frenchVerbTense = removeGender("french", randomPronoun);
+      console.log("FRENCH VERB TENSE", frenchVerbTense);
+      const englishVerbTenseWGender =
+        englishConjugation[randomVerb][_tense][englishVerbTense];
+      console.log("englishVerbTenseWGender", englishVerbTenseWGender);
+      const frenchVerbTenseGender =
+        frenchConjugation[randomVerb][_tense][frenchVerbTense.noGender][
+          frenchVerbTense.gender
+        ];
+      console.log("frenchVerbTenseGender", frenchVerbTenseGender);
+      setEnglishVerbConjugation(englishVerbTenseWGender);
+      if (frenchVerbTenseGender.hasOwnProperty("singular")) {
+        setFrenchVerbConjugation(frenchVerbTenseGender["singular"]);
+      } else setFrenchVerbConjugation(frenchVerbTenseGender);
+      setConjugationValue("");
+      setTense(_tense);
+      setVerb(randomVerb);
+      chooseFont();
+      if (!isNavBarOpen) {
+        finalRef.current.focus();
+      }
     }
   };
 
@@ -314,6 +380,20 @@ export default function Home() {
           setCurrentTenses(_newcurrentTenses);
         }
       }
+      case "pronoun": {
+        console.log("PRONOUN", pronounsDeDupedNoGender[index], currentPronouns);
+        const _pronoun = pronounsDeDupedNoGender[index];
+        if (checked !== false) {
+          let _newcurrentPronouns = currentPronouns;
+          _newcurrentPronouns.push(_pronoun);
+          setCurrentPronouns([..._newcurrentPronouns]);
+        } else {
+          const _newcurrentPronouns = currentPronouns.filter(function (p) {
+            return p !== _pronoun;
+          });
+          setCurrentPronouns(_newcurrentPronouns);
+        }
+      }
     }
   };
 
@@ -324,13 +404,12 @@ export default function Home() {
     if (correctConfirmation === true) {
       setCorrectConfirmation(false);
     }
-    if (!pronoun) {
-      refresh();
-    }
-    if (prevVerbs !== currentVerbs) {
-      refresh();
-    }
-    if (prevTenses !== currentTenses) {
+    if (
+      !pronoun ||
+      prevVerbs !== currentVerbs ||
+      prevTenses !== currentTenses ||
+      prevPronouns !== currentPronouns
+    ) {
       refresh();
     }
   }, [
@@ -349,6 +428,7 @@ export default function Home() {
     correctConfirmation,
     currentVerbs,
     currentTenses,
+    currentPronouns,
   ]);
 
   return (
@@ -371,6 +451,8 @@ export default function Home() {
                 verbs={frenchVerbs}
                 currentTenses={currentTenses}
                 tenses={tenses}
+                currentPronouns={currentPronouns}
+                pronouns={pronounsDeDupedNoGender}
               />
             )}
           </Box>
