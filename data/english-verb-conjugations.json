@@ -1,7 +1,7 @@
 {
   "aller": {
     "infinitive": "to go",
-    "present": {
+    "présent": {
       "first person singular": "go",
       "second person singular": "go",
       "third person singular": "goes",
@@ -9,7 +9,7 @@
       "second person plural": "go",
       "third person plural": "go"
     },
-    "imperfect": {
+    "imparfait": {
       "first person singular": "used to go",
       "second person singular": "used to go",
       "third person singular": "used to go",
@@ -17,7 +17,7 @@
       "second person plural": "used to go",
       "third person plural": "used to go"
     },
-    "conditional": {
+    "conditional perfect": {
       "first person singular": "would go",
       "second person singular": "would go",
       "third person singular": "would go",
@@ -32,11 +32,27 @@
       "first person plural": "went",
       "second person plural": "went",
       "third person plural": "went"
+    },
+    "subjonctif présent": {
+      "first person singular": "am going",
+      "second person singular": "go",
+      "third person singular": "goes",
+      "first person plural": "are going",
+      "second person plural": "are going",
+      "third person plural": "go"
+    },
+    "futur proche": {
+      "first person singular": "am going to go",
+      "second person singular": "are going to go",
+      "third person singular": "is going to go",
+      "first person plural": "we are going to go",
+      "second person plural": "are going to go",
+      "third person plural": "are going to go"
     }
   },
   "avoir": {
     "infinitive": "to have",
-    "present": {
+    "présent": {
       "first person singular": "have",
       "second person singular": "have",
       "third person singular": "has",
@@ -44,7 +60,7 @@
       "second person plural": "have",
       "third person plural": "have"
     },
-    "imperfect": {
+    "imparfait": {
       "first person singular": "used to have",
       "second person singular": "used to have",
       "third person singular": "used to have",
@@ -52,7 +68,7 @@
       "second person plural": "used to have",
       "third person plural": "used to have"
     },
-    "conditional": {
+    "conditional perfect": {
       "first person singular": "would have",
       "second person singular": "would have",
       "third person singular": "would have",
@@ -67,11 +83,27 @@
       "first person plural": "had",
       "second person plural": "had",
       "third person plural": "had"
+    },
+    "subjonctif présent": {
+      "first person singular": "have",
+      "second person singular": "have",
+      "third person singular": "has",
+      "first person plural": "have",
+      "second person plural": "have",
+      "third person plural": "have"
+    },
+    "futur proche": {
+      "first person singular": "am going to have",
+      "second person singular": "are going to have",
+      "third person singular": "is going to have",
+      "first person plural": "we are going to have",
+      "second person plural": "are going to have",
+      "third person plural": "are going to have"
     }
   },
   "être": {
     "infinitive": "to be",
-    "present": {
+    "présent": {
       "first person singular": "am",
       "second person singular": "are",
       "third person singular": "is",
@@ -79,7 +111,7 @@
       "second person plural": "are",
       "third person plural": "are"
     },
-    "imperfect": {
+    "imparfait": {
       "first person singular": "used to be",
       "second person singular": "used to be",
       "third person singular": "used to be",
@@ -87,13 +119,13 @@
       "second person plural": "used to be",
       "third person plural": "used to be"
     },
-    "conditional": {
-      "first person singular": "would have been",
-      "second person singular": "would have been",
-      "third person singular": "would have been",
-      "first person plural": "would have been",
-      "second person plural": "would have been",
-      "third person plural": "would have been"
+    "conditional perfect": {
+      "first person singular": "would be",
+      "second person singular": "would be",
+      "third person singular": "would be",
+      "first person plural": "would be",
+      "second person plural": "would be",
+      "third person plural": "would be"
     },
     "passé composé": {
       "first person singular": "was",
@@ -102,6 +134,73 @@
       "first person plural": "were",
       "second person plural": "were",
       "third person plural": "were"
+    },
+    "subjonctif présent": {
+      "first person singular": "will be",
+      "second person singular": "will be",
+      "third person singular": "will be",
+      "first person plural": "will be",
+      "second person plural": "will be",
+      "third person plural": "will be"
+    },
+    "futur proche": {
+      "first person singular": "am going to be",
+      "second person singular": "are going to be",
+      "third person singular": "is going to be",
+      "first person plural": "are going to be",
+      "second person plural": "are going to be",
+      "third person plural": "are going to be"
+    }
+  },
+  "faire": {
+    "infinitive": "to do/to make",
+    "présent": {
+      "first person singular": "do/make",
+      "second person singular": "do/make",
+      "third person singular": "does/makes",
+      "first person plural": "do/make",
+      "second person plural": "do/make",
+      "third person plural": "do/make"
+    },
+    "imparfait": {
+      "first person singular": "used to do/make",
+      "second person singular": "used to do/make",
+      "third person singular": "used to do/make",
+      "first person plural": "used to do/make",
+      "second person plural": "used to do/make",
+      "third person plural": "used to do/make"
+    },
+    "conditional perfect": {
+      "first person singular": "would do/make",
+      "second person singular": "would do/make",
+      "third person singular": "would do/make",
+      "first person plural": "would do/make",
+      "second person plural": "would do/make",
+      "third person plural": "would do/make"
+    },
+    "passé composé": {
+      "first person singular": "did/made",
+      "second person singular": "did/made",
+      "third person singular": "did/made",
+      "first person plural": "did/made",
+      "second person plural": "did/made",
+      "third person plural": "did/made"
+    },
+    "subjonctif présent": {
+      "first person singular": "will do/make",
+      "second person singular": "will do/make",
+      "third person singular": "will do/make",
+      "first person plural": "will do/make",
+      "second person plural": "will do/make",
+      "third person plural": "will do/make"
+    },
+    "futur proche": {
+      "first person singular": "am going to do/make",
+      "second person singular": "are going to do/make",
+      "third person singular": "is going to do/make",
+      "first person plural": "are going to do/make",
+      "second person plural": "are going to do/make",
+      "third person plural": "are going to do/make"
     }
   }
 }

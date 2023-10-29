@@ -147,7 +147,7 @@ export default function Home() {
   const [frenchPronoun, setFrenchPronoun] = useState();
   const [pronounLabel, setPronounLabel] = useState();
   const [verb, setVerb] = useState("avoir");
-  const [tense, setTense] = useState("imperfect");
+  const [tense, setTense] = useState("imparfait");
   const [englishVerbConjugation, setEnglishVerbConjugation] = useState();
   const [frenchVerbConjugation, setFrenchVerbConjugation] = useState();
   const [currentRandomPronoun, setCurrentRandomPronoun] = useState({
@@ -221,7 +221,7 @@ export default function Home() {
       return false;
     }
     if (currentTenses.length === 0) {
-      setCurrentTenses(["present"]);
+      setCurrentTenses(["présent"]);
       toast({
         title: "No tenses!",
         position: "top",

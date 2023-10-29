@@ -1,6 +1,6 @@
 {
   "aller": {
-    "present": {
+    "présent": {
       "first person singular": { "masculine": "vais", "feminine": "vais" },
       "second person singular": { "masculine": "vas", "feminine": "vas" },
       "third person singular": {
@@ -21,7 +21,7 @@
       },
       "third person plural": { "masculine": "vont", "feminine": "vont" }
     },
-    "imperfect": {
+    "imparfait": {
       "first person singular": { "masculine": "allais", "feminine": "allais" },
       "second person singular": { "masculine": "allais", "feminine": "allais" },
       "third person singular": {
@@ -42,7 +42,7 @@
       },
       "third person plural": { "masculine": "allaient", "feminine": "allaient" }
     },
-    "conditional": {
+    "conditional perfect": {
       "first person singular": { "masculine": "irais", "feminine": "irais" },
       "second person singular": { "masculine": "irais", "feminine": "irais" },
       "third person singular": {
@@ -95,10 +95,76 @@
         "masculine": "sont allés",
         "feminine": "sont allées"
       }
+    },
+    "subjonctif présent": {
+      "first person singular": {
+        "masculine": "aille",
+        "feminine": "aillée"
+      },
+      "second person singular": {
+        "masculine": "ailles",
+        "feminine": "ailles"
+      },
+      "third person singular": {
+        "masculine": "aille",
+        "feminine": "aille",
+        "indefinite": "aille"
+      },
+      "first person plural": {
+        "masculine": "allions",
+        "feminine": "allions"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "alliez",
+          "plural": "alliez"
+        },
+        "feminine": {
+          "singular": "alliez",
+          "plural": "alliez"
+        }
+      },
+      "third person plural": {
+        "masculine": "aillent",
+        "feminine": "aillent"
+      }
+    },
+    "futur proche": {
+      "first person singular": {
+        "masculine": "vais aller",
+        "feminine": "vais aller"
+      },
+      "second person singular": {
+        "masculine": "vas aller",
+        "feminine": "vas aller"
+      },
+      "third person singular": {
+        "masculine": "va aller",
+        "feminine": "va aller",
+        "indefinite": "va aller"
+      },
+      "first person plural": {
+        "masculine": "allons aller",
+        "feminine": "allons aller"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "allez aller",
+          "plural": "allez aller"
+        },
+        "feminine": {
+          "singular": "allez aller",
+          "plural": "allez  aller"
+        }
+      },
+      "third person plural": {
+        "masculine": "vont aller",
+        "feminine": "vont aller"
+      }
     }
   },
   "avoir": {
-    "present": {
+    "présent": {
       "first person singular": { "masculine": "ai", "feminine": "ai" },
       "second person singular": { "masculine": "as", "feminine": "as" },
       "third person singular": {
@@ -119,7 +185,7 @@
       },
       "third person plural": { "masculine": "ont", "feminine": "ont" }
     },
-    "imperfect": {
+    "imparfait": {
       "first person singular": { "masculine": "avais", "feminine": "avais" },
       "second person singular": { "masculine": "avais", "feminine": "avais" },
       "third person singular": {
@@ -140,7 +206,7 @@
       },
       "third person plural": { "masculine": "avaient", "feminine": "avaient" }
     },
-    "conditional": {
+    "conditional perfect": {
       "first person singular": { "masculine": "aurais", "feminine": "aurais" },
       "second person singular": { "masculine": "aurais", "feminine": "aurais" },
       "third person singular": {
@@ -193,10 +259,76 @@
         "masculine": "ont eu",
         "feminine": "ont eu"
       }
+    },
+    "subjonctif présent": {
+      "first person singular": {
+        "masculine": "aie",
+        "feminine": "aiee"
+      },
+      "second person singular": {
+        "masculine": "aies",
+        "feminine": "aies"
+      },
+      "third person singular": {
+        "masculine": "ait",
+        "feminine": "ait",
+        "indefinite": "ait"
+      },
+      "first person plural": {
+        "masculine": "ayons",
+        "feminine": "ayons"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "ayez",
+          "plural": "ayez"
+        },
+        "feminine": {
+          "singular": "ayez",
+          "plural": "ayez"
+        }
+      },
+      "third person plural": {
+        "masculine": "aient",
+        "feminine": "aient"
+      }
+    },
+    "futur proche": {
+      "first person singular": {
+        "masculine": "vais avoir",
+        "feminine": "vais avoir"
+      },
+      "second person singular": {
+        "masculine": "tu vas avoir",
+        "feminine": "tu vas avoir"
+      },
+      "third person singular": {
+        "masculine": "va avoir",
+        "feminine": "va avoir",
+        "indefinite": "va avoir"
+      },
+      "first person plural": {
+        "masculine": "allons avoir",
+        "feminine": "allons avoir"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "allez avoir",
+          "plural": "allez avoir"
+        },
+        "feminine": {
+          "singular": "allez avoir",
+          "plural": "allez avoir"
+        }
+      },
+      "third person plural": {
+        "masculine": "vont avoir",
+        "feminine": "vont avoir"
+      }
     }
   },
   "être": {
-    "present": {
+    "présent": {
       "first person singular": { "masculine": "suis", "feminine": "suis" },
       "second person singular": { "masculine": "es", "feminine": "es" },
       "third person singular": {
@@ -217,7 +349,7 @@
       },
       "third person plural": { "masculine": "sont", "feminine": "sont" }
     },
-    "imperfect": {
+    "imparfait": {
       "first person singular": { "masculine": "étais", "feminine": "étais" },
       "second person singular": { "masculine": "étais", "feminine": "étais" },
       "third person singular": {
@@ -238,7 +370,7 @@
       },
       "third person plural": { "masculine": "étaient", "feminine": "étaient" }
     },
-    "conditional": {
+    "conditional perfect": {
       "first person singular": { "masculine": "serais", "feminine": "serais" },
       "second person singular": { "masculine": "serais", "feminine": "serais" },
       "third person singular": {
@@ -290,6 +422,248 @@
       "third person plural": {
         "masculine": "ont été",
         "feminine": "ont été"
+      }
+    },
+    "subjonctif présent": {
+      "first person singular": {
+        "masculine": "sois",
+        "feminine": "sois"
+      },
+      "second person singular": {
+        "masculine": "sois",
+        "feminine": "sois"
+      },
+      "third person singular": {
+        "masculine": "soit",
+        "feminine": "soit",
+        "indefinite": "soit"
+      },
+      "first person plural": {
+        "masculine": "soyons",
+        "feminine": "soyons"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "soyez",
+          "plural": "soyez"
+        },
+        "feminine": {
+          "singular": "soyez",
+          "plural": "soyez"
+        }
+      },
+      "third person plural": {
+        "masculine": "soient",
+        "feminine": "soient"
+      }
+    },
+    "futur proche": {
+      "first person singular": {
+        "masculine": "serai",
+        "feminine": "serai"
+      },
+      "second person singular": {
+        "masculine": "seras",
+        "feminine": "seras"
+      },
+      "third person singular": {
+        "masculine": "sera",
+        "feminine": "sera",
+        "indefinite": "sera"
+      },
+      "first person plural": {
+        "masculine": "serons",
+        "feminine": "serons"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "serez",
+          "plural": "serez"
+        },
+        "feminine": {
+          "singular": "serez",
+          "plural": "serez"
+        }
+      },
+      "third person plural": {
+        "masculine": "seront",
+        "feminine": "seront"
+      }
+    }
+  },
+  "faire": {
+    "présent": {
+      "first person singular": { "masculine": "fais", "feminine": "fais" },
+      "second person singular": { "masculine": "fais", "feminine": "fais" },
+      "third person singular": {
+        "masculine": "fait",
+        "feminine": "fait",
+        "indefinite": "fait"
+      },
+      "first person plural": { "masculine": "faisons", "feminine": "faisons" },
+      "second person plural": {
+        "masculine": {
+          "singular": "faites",
+          "plural": "faites"
+        },
+        "feminine": {
+          "singular": "faites",
+          "plural": "faites"
+        }
+      },
+      "third person plural": { "masculine": "font", "feminine": "font" }
+    },
+    "imparfait": {
+      "first person singular": {
+        "masculine": "faisais",
+        "feminine": "faisais"
+      },
+      "second person singular": {
+        "masculine": "faisais",
+        "feminine": "faisais"
+      },
+      "third person singular": {
+        "masculine": "faisait",
+        "feminine": "faisait",
+        "indefinite": "faisait"
+      },
+      "first person plural": {
+        "masculine": "faisions",
+        "feminine": "faisions"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "faisiez",
+          "plural": "faisiez"
+        },
+        "feminine": {
+          "singular": "faisiez",
+          "plural": "faisiez"
+        }
+      },
+      "third person plural": {
+        "masculine": "faisaient",
+        "feminine": "faisaient"
+      }
+    },
+    "conditional perfect": {
+      "first person singular": { "masculine": "ferais", "feminine": "ferais" },
+      "second person singular": { "masculine": "ferais", "feminine": "ferais" },
+      "third person singular": {
+        "masculine": "ferait",
+        "feminine": "ferait",
+        "indefinite": "ferait"
+      },
+      "first person plural": { "masculine": "ferions", "feminine": "ferions" },
+      "second person plural": {
+        "masculine": {
+          "singular": "feriez",
+          "plural": "feriez"
+        },
+        "feminine": {
+          "singular": "feriez",
+          "plural": "feriez"
+        }
+      },
+      "third person plural": { "masculine": "feraient", "feminine": "feraient" }
+    },
+    "passé composé": {
+      "first person singular": {
+        "masculine": "ai fait",
+        "feminine": "ai fait"
+      },
+      "second person singular": {
+        "masculine": "as fait",
+        "feminine": "as fait"
+      },
+      "third person singular": {
+        "masculine": "a fait",
+        "feminine": "a fait",
+        "indefinite": "a fait"
+      },
+      "first person plural": {
+        "masculine": "avons fait",
+        "feminine": "avons fait"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "avez fait",
+          "plural": "avez fait"
+        },
+        "feminine": {
+          "singular": "avez fait",
+          "plural": "avez fait"
+        }
+      },
+      "third person plural": {
+        "masculine": "ont fait",
+        "feminine": "ont fait"
+      }
+    },
+    "subjonctif présent": {
+      "first person singular": {
+        "masculine": "fasse",
+        "feminine": "fasse"
+      },
+      "second person singular": {
+        "masculine": "fasses",
+        "feminine": "fasses"
+      },
+      "third person singular": {
+        "masculine": "fasse",
+        "feminine": "fasse",
+        "indefinite": "fasse"
+      },
+      "first person plural": {
+        "masculine": "fassions",
+        "feminine": "fassions"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "fassiez",
+          "plural": "fassiez"
+        },
+        "feminine": {
+          "singular": "fassiez",
+          "plural": "fassiez"
+        }
+      },
+      "third person plural": {
+        "masculine": "fassent",
+        "feminine": "fassent"
+      }
+    },
+    "futur proche": {
+      "first person singular": {
+        "masculine": "vais faire",
+        "feminine": "vais faire"
+      },
+      "second person singular": {
+        "masculine": "vas faire",
+        "feminine": "vas faire"
+      },
+      "third person singular": {
+        "masculine": "va faire",
+        "feminine": "va faire",
+        "indefinite": "va faire"
+      },
+      "first person plural": {
+        "masculine": "allons faire",
+        "feminine": "allons faire"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "allez faire",
+          "plural": "allez faire"
+        },
+        "feminine": {
+          "singular": "allez faire",
+          "plural": "allez faire"
+        }
+      },
+      "third person plural": {
+        "masculine": "vont faire",
+        "feminine": "vont faire"
       }
     }
   }
