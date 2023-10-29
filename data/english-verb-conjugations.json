@@ -202,5 +202,56 @@
       "second person plural": "are going to do/make",
       "third person plural": "are going to do/make"
     }
+  },
+  "améliorer": {
+    "infinitive": "to improve",
+    "présent": {
+      "first person singular": "improve",
+      "second person singular": "improve",
+      "third person singular": "improves",
+      "first person plural": "improve",
+      "second person plural": "improve",
+      "third person plural": "improve"
+    },
+    "imparfait": {
+      "first person singular": "used to improve",
+      "second person singular": "used to improve",
+      "third person singular": "used to improve",
+      "first person plural": "used to improve",
+      "second person plural": "used to improve",
+      "third person plural": "used to improve"
+    },
+    "conditional perfect": {
+      "first person singular": "would improve",
+      "second person singular": "would improve",
+      "third person singular": "would improve",
+      "first person plural": "would improve",
+      "second person plural": "would improve",
+      "third person plural": "would improve"
+    },
+    "passé composé": {
+      "first person singular": "improved",
+      "second person singular": "improved",
+      "third person singular": "improved",
+      "first person plural": "improved",
+      "second person plural": "improved",
+      "third person plural": "improved"
+    },
+    "subjonctif présent": {
+      "first person singular": "will improve",
+      "second person singular": "will improve",
+      "third person singular": "will improve",
+      "first person plural": "will improve",
+      "second person plural": "will improve",
+      "third person plural": "will improve"
+    },
+    "futur proche": {
+      "first person singular": "am going to improve",
+      "second person singular": "are going to improve",
+      "third person singular": "is going to improve",
+      "first person plural": "are going to improve",
+      "second person plural": "are going to improve",
+      "third person plural": "are going to improve"
+    }
   }
 }

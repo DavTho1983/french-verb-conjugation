@@ -666,5 +666,205 @@
         "feminine": "vont faire"
       }
     }
+  },
+  "améliorer": {
+    "présent": {
+      "first person singular": {
+        "masculine": "améliore",
+        "feminine": "améliore"
+      },
+      "second person singular": {
+        "masculine": "améliores",
+        "feminine": "améliores"
+      },
+      "third person singular": {
+        "masculine": "améliore",
+        "feminine": "amélioree",
+        "indefinite": "améliore"
+      },
+      "first person plural": {
+        "masculine": "améliorons",
+        "feminine": "améliorons"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "améliorez",
+          "plural": "améliorez"
+        },
+        "feminine": {
+          "singular": "améliorez",
+          "plural": "améliorez"
+        }
+      },
+      "third person plural": {
+        "masculine": "améliorent",
+        "feminine": "améliorent"
+      }
+    },
+    "imparfait": {
+      "first person singular": {
+        "masculine": "améliorais",
+        "feminine": "améliorais"
+      },
+      "second person singular": {
+        "masculine": "améliorais",
+        "feminine": "améliorais"
+      },
+      "third person singular": {
+        "masculine": "améliorait",
+        "feminine": "améliorait",
+        "indefinite": "améliorait"
+      },
+      "first person plural": {
+        "masculine": "améliorions",
+        "feminine": "améliorions"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "amélioriez",
+          "plural": "amélioriez"
+        },
+        "feminine": {
+          "singular": "amélioriez",
+          "plural": "amélioriez"
+        }
+      },
+      "third person plural": {
+        "masculine": "amélioraient",
+        "feminine": "amélioraient"
+      }
+    },
+    "conditional perfect": {
+      "first person singular": {
+        "masculine": "améliorerais",
+        "feminine": "améliorerais"
+      },
+      "second person singular": {
+        "masculine": "améliorerais",
+        "feminine": "améliorerais"
+      },
+      "third person singular": {
+        "masculine": "améliorerait",
+        "feminine": "améliorerait",
+        "indefinite": "améliorerait"
+      },
+      "first person plural": {
+        "masculine": "améliorerions",
+        "feminine": "améliorerions"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "amélioreriez",
+          "plural": "amélioreriez"
+        },
+        "feminine": {
+          "singular": "amélioreriez",
+          "plural": "amélioreriez"
+        }
+      },
+      "third person plural": {
+        "masculine": "amélioreraient",
+        "feminine": "amélioreraient"
+      }
+    },
+    "passé composé": {
+      "first person singular": {
+        "masculine": "ai amélioré",
+        "feminine": "ai amélioré"
+      },
+      "second person singular": {
+        "masculine": "as amélioré",
+        "feminine": "as amélioré"
+      },
+      "third person singular": {
+        "masculine": "a amélioré",
+        "feminine": "a amélioré",
+        "indefinite": "a amélioré"
+      },
+      "first person plural": {
+        "masculine": "avons amélioré",
+        "feminine": "avons amélioré"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "avez amélioré",
+          "plural": "avez amélioré"
+        },
+        "feminine": {
+          "singular": "avez amélioré",
+          "plural": "avez amélioré"
+        }
+      },
+      "third person plural": {
+        "masculine": "ont amélioré",
+        "feminine": "ont amélioré"
+      }
+    },
+    "subjonctif présent": {
+      "first person singular": {
+        "masculine": "améliore",
+        "feminine": "améliore"
+      },
+      "second person singular": {
+        "masculine": "améliores",
+        "feminine": "améliores"
+      },
+      "third person singular": {
+        "masculine": "améliore",
+        "feminine": "amélioree",
+        "indefinite": "améliore"
+      },
+      "first person plural": {
+        "masculine": "améliorions",
+        "feminine": "améliorions"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "amélioriez",
+          "plural": "amélioriez"
+        },
+        "feminine": {
+          "singular": "amélioriez",
+          "plural": "amélioriez"
+        }
+      },
+      "third person plural": {
+        "masculine": "améliorent",
+        "feminine": "améliorent"
+      }
+    },
+    "futur proche": {
+      "first person singular": {
+        "masculine": "vais améliorer",
+        "feminine": "vais améliorer"
+      },
+      "second person singular": {
+        "masculine": "vas améliorer",
+        "feminine": "vas améliorer"
+      },
+      "third person singular": {
+        "masculine": "va améliorer",
+        "feminine": "va améliorer",
+        "indefinite": "va améliorer"
+      },
+      "first person plural": {
+        "masculine": "allons améliorer",
+        "feminine": "allons améliorer"
+      },
+      "second person plural": {
+        "masculine": {
+          "singular": "allez améliorer",
+          "plural": "allez améliorer"
+        },
+        "feminine": {
+          "singular": "allez améliorer",
+          "plural": "allez améliorer"
+        }
+      },
+      "third person plural": {
+        "masculine": "vont améliorer",
+        "feminine": "vont améliorer"
+      }
+    }
   }
 }
